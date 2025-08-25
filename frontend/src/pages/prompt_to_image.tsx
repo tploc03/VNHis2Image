@@ -63,7 +63,6 @@ type ProgressResp = {
 
 const API_BASE = (import.meta as any).env?.VITE_API_BASE || "http://localhost:8001";
 
-/** ------------ API calls ------------ **/
 async function callNERAPI(text: string, style: string) {
   const r = await fetch(`${API_BASE}/ner`, {
     method: "POST",
@@ -71,7 +70,27 @@ async function callNERAPI(text: string, style: string) {
     body: JSON.stringify({ text, style }),
   });
   if (!r.ok) throw new Error(`NER API lỗi (${r.status})`);
-  return (await r.json()) as { fields: Record<string, string>; scores: Record<string, number> };
+  const data = await r.json();
+
+  if (data?.fields) {
+    return { fields: data.fields as Record<string, string>, scores: (data.scores || {}) as Record<string, number> };
+  }
+  if (Array.isArray(data?.spans)) {
+    const fields: Record<string, string> = {};
+    const scores: Record<string, number> = {};
+    for (const sp of data.spans) {
+      const label = String(sp.label || "").toLowerCase();
+      const text = String(sp.text || "");
+      const sc = typeof sp.score === "number" ? sp.score : undefined;
+      if (!fields[label] || text.length > fields[label].length) {
+        fields[label] = text;
+        if (typeof sc === "number") scores[label] = sc;
+      }
+    }
+    return { fields, scores };
+  }
+
+  return { fields: {}, scores: {} };
 }
 
 async function callImageAPI(prompt: string, signal?: AbortSignal): Promise<string> {
@@ -101,7 +120,7 @@ export default function PromptToImage() {
   const [style, setStyle] = useState<keyof typeof PROMPT_TEMPLATES>("portrait");
   const [composeVietnamese, setComposeVietnamese] = useState(true);
 
-  const controllerRef = useRef<AbortController | null>(null); // ✅ hook ở trong component
+  const controllerRef = useRef<AbortController | null>(null);
 
   const template = PROMPT_TEMPLATES[style];
   const placeholders = useMemo(() => extractPlaceholders(template), [template]);
@@ -149,7 +168,8 @@ export default function PromptToImage() {
       return;
     }
     try {
-      const { fields } = await callNERAPI(base, style);
+      const res = await callNERAPI(base, style);
+      const fields = res?.fields ?? {};
       setExtracted(fields);
       const miss = missingRequired(fields);
       setAnalysisNotes(miss.length ? miss.map((m) => `Thiếu trường bắt buộc: ${m}`) : ["Đủ trường bắt buộc theo phong cách."]);
@@ -229,7 +249,7 @@ export default function PromptToImage() {
           setPreview(prefixed);
         }
       } catch {
-        // bỏ qua lỗi poll
+
       }
     };
 
