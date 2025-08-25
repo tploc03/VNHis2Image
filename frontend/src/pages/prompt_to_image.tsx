@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-empty */
  
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -204,7 +205,6 @@ export default function PromptToImage() {
         finalPrompt = buildPromptFromValues(vals);
       }
 
-      // tạo controller mới cho lần gọi này
       controllerRef.current = new AbortController();
       try {
         const url = await callImageAPI(finalPrompt, controllerRef.current.signal);
@@ -249,7 +249,7 @@ export default function PromptToImage() {
           setPreview(prefixed);
         }
       } catch {
-
+        // bỏ qua lỗi poll
       }
     };
 
@@ -325,37 +325,34 @@ export default function PromptToImage() {
 
                 {/* FORM MODE */}
                 <TabsContent value="form" className="pt-4 space-y-4">
-                  <div className="rounded-xl border border-amber-700 p-3 bg-stone-900/60">
+                    {/*<div className="rounded-xl border border-amber-700 p-3 bg-stone-900/60">
                     <p className="text-sm text-stone-300 mb-2">
                       Điền các chỗ <span className="font-mono text-amber-400">[placeholder]</span> bắt buộc:
                     </p>
                     {guidanceList}
                   </div>
+                  */}
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {placeholders.map((f) => (
-                      <div className="space-y-1" key={f}>
-                        <Label className="capitalize text-stone-300">{f.replaceAll("_", " ")}</Label>
-                        <Input
-                          className="bg-stone-900 border-amber-700 placeholder:text-stone-500 text-stone-100"
-                          placeholder={PLACEHOLDER_HINTS[f] || f}
-                          value={values[f] || ""}
-                          onChange={(e: { target: { value: string } }) => handleChange(f, e.target.value)}
-                        />
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="space-y-1 mt-1">
-                    <Label className="text-stone-300">Ghi chú bổ sung</Label>
-                    <Textarea
-                      className="bg-stone-900 border-amber-700 min-h-[90px] placeholder:text-stone-500 text-stone-100"
-                      placeholder="Ví dụ: ánh sáng hoàng hôn, góc máy thấp…"
-                      value={extraNotes}
-                      onChange={(e: { target: { value: React.SetStateAction<string> } }) => setExtraNotes(e.target.value)}
-                    />
-                  </div>
-                </TabsContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {placeholders.map((f) => {
+                        const isRequired = REQUIRED_FIELDS[style].includes(f); // <- đánh dấu bắt buộc
+                        return (
+                          <div className="space-y-1" key={f}>
+                            <Label className="capitalize text-stone-300">
+                              {f.replaceAll("_", " ")}
+                              {isRequired && <span className="text-red-500">&nbsp;*</span>}
+                            </Label>
+                            <Input
+                              className="bg-stone-900 border-amber-700 placeholder:text-stone-500 text-stone-100"
+                              placeholder={PLACEHOLDER_HINTS?.[f] || f}
+                              value={values[f] || ""}
+                              onChange={(e) => handleChange(f, e.target.value)}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </TabsContent>
 
                 {/* MANUAL MODE */}
                 <TabsContent value="manual" className="pt-4 space-y-4">
