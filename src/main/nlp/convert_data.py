@@ -93,11 +93,11 @@ def convert_doccano_to_spacy(input_path, output_path):
 
 if __name__ == "__main__":
     convert_doccano_to_spacy(
-        "book_data/labeled/split/v5/train.jsonl",
-        "book_data/labeled/corpus/v5/train.spacy"
+        "data/labeled/json_files/v5/train.jsonl",
+        "data/labeled/corpus/v5/train.spacy"
     )
     convert_doccano_to_spacy(
-        "book_data/labeled/split/v5/dev.jsonl",
-        "book_data/labeled/corpus/v5/dev.spacy"
+        "data/labeled/json_files/v5/dev.jsonl",
+        "data/labeled/corpus/v5/dev.spacy"
     )
 

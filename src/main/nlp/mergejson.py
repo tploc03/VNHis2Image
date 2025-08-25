@@ -4,7 +4,6 @@ import glob
 input_folder = "runs/preds_v5"
 output = "runs/preds_all.jsonl"
 
-# Tạo thư mục output nếu chưa có
 os.makedirs(os.path.dirname(output), exist_ok=True)
 
 total_lines = 0
@@ -16,7 +15,6 @@ with open(output, 'w', encoding='utf-8') as out:
         with open(fname, 'r', encoding='utf-8') as f:
             for line_num, line in enumerate(f, 1):
                 try:
-                    # chỉ ghi nguyên dòng, không kiểm tra trùng
                     out.write(line)
                     total_lines += 1
                 except Exception as e:

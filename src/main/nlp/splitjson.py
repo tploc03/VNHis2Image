@@ -3,8 +3,8 @@ import json
 import os
 
 random.seed(2025)
-input_file = "book_data/labeled/json_files/v4/v4.jsonl"
-output_dir = "book_data/labeled/split/v5"
+input_file = "data/labeled/json_files/v4/v4.jsonl"
+output_dir = "data/labeled/json_files/v5"
 train_ratio = 0.8
 
 os.makedirs(output_dir, exist_ok=True)

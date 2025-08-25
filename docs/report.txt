@@ -1,0 +1,1415 @@
+--- Bắt đầu phân tích file: data/labeled/json_files/v4/v4.jsonl ---
+
+1. TỔNG QUAN PHÂN PHỐI NHÃN
+Tổng số câu: 10365
+Tổng số thực thể đã gán nhãn: 44722
+
+NHÃN                      | SỐ LƯỢNG   | TỶ LỆ % 
+PERSON                    | 7580       |   16.9%
+TITLE                     | 6635       |   14.8%
+LOCATION                  | 6168       |   13.8%
+ACTION                    | 5142       |   11.5%
+DYNASTY                   | 3538       |    7.9%
+TIME                      | 2862       |    6.4%
+ARCHITECTURE              | 2477       |    5.5%
+COSTUME                   | 2379       |    5.3%
+ORGANIZATION              | 2271       |    5.1%
+ARTIFACT                  | 1816       |    4.1%
+CONCEPT                   | 1442       |    3.2%
+EVENT                     | 1244       |    2.8%
+FLORA_FAUNA               | 1168       |    2.6%
+
+2. PHÂN TÍCH CÁC THỰC THỂ KHÔNG NHẤT QUÁN
+(Các thực thể được gán nhiều hơn 1 loại nhãn khác nhau)
+
+Tìm thấy 171 thực thể không nhất quán:
+
+1. Thực thể: 'tiên'
+Số nhãn khác nhau: 3
+   -> Nhãn 'TITLE': 5 lần
+   -> Nhãn 'FLORA_FAUNA': 1 lần
+   -> Nhãn 'PERSON': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1991, nhãn 'FLORA_FAUNA' (bất thường): dòng mẹ gồm **tiên** ( vụ **tiên** , âu cơ ) , rồng ( long nữ ) và nước ( động đình hồ ) .
+      • Dòng 2036, nhãn 'PERSON' (bất thường): trong truyện cá tinh có nói cá tinh biến thành gà trắng gáy để lừa các **tiên **ngưng đào cảng và bay về trời .
+   Nhãn có vẻ đúng: TITLE (5 lần)
+--------------------------------------------------------------------------------
+2. Thực thể: 'hoàng thành'
+Số nhãn khác nhau: 3
+   -> Nhãn 'PERSON': 3 lần
+   -> Nhãn 'ARCHITECTURE': 12 lần
+   -> Nhãn 'LOCATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 981, nhãn 'PERSON' (bất thường): tướng giặc là bọn tạ phượng , **hoàng thành** , lui đóng đồn ở nga_lạc .
+      • Dòng 1135, nhãn 'PERSON' (bất thường): bắt sống được tướng giặc là chu kiệt , chém được tiên_phong của giặc là **hoàng thành** .
+      • Dòng 7554, nhãn 'PERSON' (bất thường): bốn mặt đổ ra đánh , tướng nhà minh là chu kiệt phải bắt , **hoàng thành** phải chém , còn quân sĩ bỏ chạy cả.
+      • Dòng 9861, nhãn 'LOCATION' (bất thường): vua thế tổ định tội , thưởng công xong rồi , lo sửa sang mọi việc ; làm đền cần chính để lập thường triều , đền thái hòa để lập đại triều ; lại sai quân dân xây thành kinh đô và **hoàng thành** cùng các thành trì ở ngoài các doanh trấn.
+   Nhãn có vẻ đúng: ARCHITECTURE (12 lần)
+--------------------------------------------------------------------------------
+3. Thực thể: 'công'
+Số nhãn khác nhau: 3
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'TITLE': 4 lần
+   -> Nhãn 'FLORA_FAUNA': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1188, nhãn 'ACTION' (bất thường): nhà_vua bảo các tướng rằng : _ các bậc tướng giỏi đời xưa , bỏ chỗ vững , đánh chỗ núng ; lánh chỗ thực , **công** chỗ hư .
+      • Dòng 2807, nhãn 'FLORA_FAUNA' (bất thường): dây thao đơn... bộ tử: ban võ, tùy theo chức tước thêu con kỳ lân, con bạch trạch, sư tử, hổ báo, voi...; ban văn tùy theo chức tước thêu con tiên hạc, sa kê, **công**, vân nhạn.
+   Nhãn có vẻ đúng: TITLE (4 lần)
+--------------------------------------------------------------------------------
+4. Thực thể: 'nam'
+Số nhãn khác nhau: 3
+   -> Nhãn 'LOCATION': 13 lần
+   -> Nhãn 'TITLE': 1 lần
+   -> Nhãn 'DYNASTY': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 3776, nhãn 'TITLE' (bất thường): đánh xong nhà ân , vua vũ_vương phong cho hơn 70 người làm vua chư_hầu , chia ra làm 5 bậc là : công , hầu , bá , tử , **nam **.
+      • Dòng 9021, nhãn 'DYNASTY' (bất thường): trong khi quân **nam** và quân tiêm la còn đang chống giữ nhau ở chân lạp , thì ở vọng các vua nước tiêm la bắt giam cả vợ con của hai anh em chất tri , bởi vậy hai tướng ấy mới giao kết với nguyễn hữu thoại thề phải cứu nhau trong lúc hoạn nạn.
+   Nhãn có vẻ đúng: LOCATION (13 lần)
+--------------------------------------------------------------------------------
+5. Thực thể: 'họ trịnh'
+Số nhãn khác nhau: 3
+   -> Nhãn 'DYNASTY': 8 lần
+   -> Nhãn 'ORGANIZATION': 87 lần
+   -> Nhãn 'PERSON': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1646, nhãn 'DYNASTY' (bất thường): hoàng_tỷ **họ trịnh** , húy là thương , chăm_chỉ đạo đàn_bà ; buồng_the hòa_thuận , nhà ngày càng thịnh .
+      • Dòng 8509, nhãn 'DYNASTY' (bất thường): quyền về **họ trịnh**.
+      • Dòng 8658, nhãn 'DYNASTY' (bất thường): và chăng mặt nam còn có họ nguyễn , thế lực cũng chẳng kém hơn gì , mà lại có ý độc lập để tranh quyền với **họ trịnh**.
+      • Dòng 8683, nhãn 'DYNASTY' (bất thường): năm canh tý (1600) nhân vì **họ trịnh** kiêu hãnh quá , các quan có nhiều người không phục ; bọn phan ngạn , ngô đình hàm , bùi văn khuê khởi binh chống lại với **họ trịnh** ở cửa đại an (thuộc nam định) , nguyễn hoàng mới đem bản bộ tướng sĩ giả cách nói đi đánh giặc , rồi theo đường hải đạo về thuận hóa.
+      • Dòng 8824, nhãn 'DYNASTY' (bất thường): chúa nguyễn sai con là nguyễn phúc tần đem binh ra chống giữ với **họ trịnh** , khi ra đến quảng bình , nguyễn phúc tần hội các tướng lại bàn rằng: " quân kia tuy nhiều , nhưng người đánh giỏi thì ít.
+      ... và 4 ví dụ khác cần xem lại
+   Nhãn có vẻ đúng: ORGANIZATION (87 lần)
+--------------------------------------------------------------------------------
+6. Thực thể: 'đông sơn'
+Số nhãn khác nhau: 3
+   -> Nhãn 'LOCATION': 6 lần
+   -> Nhãn 'DYNASTY': 1 lần
+   -> Nhãn 'PERSON': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 9012, nhãn 'DYNASTY' (bất thường): đỗ thanh nhân đem quân **đông sơn** đánh chém được tư khấu uy , đuổi được quân tây sơn đi , ông nguyễn phúc ánh bèn sai lê văn quân đem binh ra đánh lấy thành bình thuận và thành diên khánh.
+      • Dòng 9017, nhãn 'PERSON' (bất thường): cũng vì việc ấy cho nên **đông sơn** trước đã hết lòng giúp nguyễn vương , sau đều bỏ cả , và lại phản lại , thành ra lôi thôi phải đánh dẹp mãi.
+   Nhãn có vẻ đúng: LOCATION (6 lần)
+--------------------------------------------------------------------------------
+7. Thực thể: 'bố chính'
+Số nhãn khác nhau: 3
+   -> Nhãn 'TITLE': 4 lần
+   -> Nhãn 'ORGANIZATION': 1 lần
+   -> Nhãn 'LOCATION': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 6376, nhãn 'ORGANIZATION' (bất thường): lại đặt ra 3 ti là: **bố chính** ti , án sát ti , chưởng đô ti , và cả thảy ở trong nước lập ra 472 nha môn để cai trị , sai quan thượng thư là hoàng phúc coi cả **bố chính** và án sát ti ; lữ nghị chi chưởng đô ti , hoàng trung làm phó.
+      • Dòng 7574, nhãn 'LOCATION' (bất thường): đi đến **bố chính** thì gặp tướng nhà minh là nhâm năng , hai bên đánh nhau , quân nhà minh bị phục binh đánh chạy tan cả.
+      • Dòng 7948, nhãn 'LOCATION' (bất thường): những người cựu thần có công từ ngũ phẩm dĩ thượng , có ai phạm tội đồ hay là tội lưu thì cũng tha cả ; con cháu những người được nghị công mà có tội , thì cứ theo cái thứ bậc tập 92 lưu đi cận châu là vào nghệ an , đi viễn châu là vào **bố chính** , đi ngoại châu là vào tân bình.
+   Nhãn có vẻ đúng: TITLE (4 lần)
+--------------------------------------------------------------------------------
+8. Thực thể: ''
+Số nhãn khác nhau: 3
+   -> Nhãn 'LOCATION': 1 lần
+   -> Nhãn 'TIME': 1 lần
+   -> Nhãn 'TITLE': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+9. Thực thể: 'tiêm la'
+Số nhãn khác nhau: 3
+   -> Nhãn 'DYNASTY': 26 lần
+   -> Nhãn 'LOCATION': 8 lần
+   -> Nhãn 'PERSON': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 9022, nhãn 'LOCATION' (bất thường): đoạn rồi chất tri đem quân về **tiêm la**.
+      • Dòng 9051, nhãn 'LOCATION' (bất thường): nguyên lúc đánh thua ở sài côn , châu văn tiếp chạy sang **tiêm la** cầu cứu.
+      • Dòng 9514, nhãn 'LOCATION' (bất thường): nguyễn vương ánh ở **tiêm la**.
+      • Dòng 9529, nhãn 'LOCATION' (bất thường): nguyễn vương ánh ở **tiêm la**.
+      • Dòng 9531, nhãn 'LOCATION' (bất thường): đến khi các tướng sĩ đã biết ngài ở **tiêm la** , đều lục tục kéo sang bái yết , bấy giờ có quan cũ là lê văn câu (còn gọi quân hay duân) đem 600 người sang theo giúp.
+      ... và 4 ví dụ khác cần xem lại
+   Nhãn có vẻ đúng: DYNASTY (26 lần)
+--------------------------------------------------------------------------------
+10. Thực thể: 'lý'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 51 lần
+   -> Nhãn 'PERSON': 3 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1329, nhãn 'PERSON' (bất thường): bọn sát , chú , **lý** , đem các tướng tung hết quân ra đánh .
+      • Dòng 1340, nhãn 'PERSON' (bất thường): sai bọn lê hối , lê vấn , lê khôi , lĩnh ba nghìn quân , bốn thớt voi , cùng bọn **lý** , sát , nhân chú , văn an đánh phá quân giặc .
+      • Dòng 2120, nhãn 'PERSON' (bất thường): đến lúc cao biền dẹp giặc nam chiếu , **lý** hiển linh cứu trợ , cao biền bèn sửa sang lại đền miếu , tạc gỗ làm tượng , gọi là đền **lý** hiệu úy , nay gần bên sông lớn , thuộc xã bố nhi , huyện từ liêm ( 2 ) , cách phía tây kinh thành khoảng 50 dặm , ( bố nhi nay là xã thụy hương ) .
+   Nhãn có vẻ đúng: DYNASTY (51 lần)
+--------------------------------------------------------------------------------
+11. Thực thể: 'thành'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 371 lần
+   -> Nhãn 'PERSON': 3 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 10048, nhãn 'PERSON' (bất thường): bấy giờ triều thần có nhiều người bẻ tội ông **thành**.
+      • Dòng 10049, nhãn 'PERSON' (bất thường): một hôm bãi triều rồi , ông **thành** chạy theo nắm lấy áo vua mà kêu khóc rằng: " thần theo bệ hạ từ thủa nhỏ đến bây giờ , nay không có tội gì mà bị người ta cấu xé , bệ hạ nỡ lòng nào ngồi nhìn để người ta giết thần mà không cứu ? "
+      • Dòng 10051, nhãn 'PERSON' (bất thường): vua thế tổ giật áo ra đi vào cung , rồi từ đó cấm không co ông **thành **vào chầu nữa , và sai lê văn duyệt đem con nguyễn văn **thành **ra tra hỏi , bắt phải nhận tội.
+   Nhãn có vẻ đúng: ARCHITECTURE (371 lần)
+--------------------------------------------------------------------------------
+12. Thực thể: 'phật'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 29 lần
+   -> Nhãn 'PERSON': 11 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 251, nhãn 'PERSON' (bất thường): trong chùa còn lưu giữ đủ các tượng **phật** và tượng bồ_tát .
+      • Dòng 298, nhãn 'PERSON' (bất thường): gần đền thượng có hang bụt mọc với nhiều tảng đá được thời gian bào mòn trông như tượng **phật **.
+      • Dòng 447, nhãn 'PERSON' (bất thường): 72 pho tượng gỗ của chùa tây phương là 72 công trình nghệ thuật đích thực , mỗi pho tượng biểu hiện không chỉ cuộc đời , tính cách mà cả thế giới tâm linh của các vị **phật** , bồ_tát và la_hán ?
+      • Dòng 528, nhãn 'PERSON' (bất thường): bia đá bên phải đề dòng chữ " phổ minh thiền tự " khắc năm mậu thân 1668 . bia đá bên trái có dòng chữ " phổ minh bảo tháp từ bi " khắc năm bính thìn 1916 . trong chùa ngoài hệ thống tượng **phật** , bồ_tát ?
+      • Dòng 568, nhãn 'PERSON' (bất thường): giữa sân chùa đặt một quả đại hồng chung cao 4 , 20 m , đường kính 2 , 20 m , nặng 9 tấn , do hòa thượng thích thế long cho đúc vào năm 1936 . chùa chính có cấu trúc mái vòm , bên trong thờ **phật** và thiền sư minh không .
+   Nhãn có vẻ đúng: TITLE (29 lần)
+--------------------------------------------------------------------------------
+13. Thực thể: 'tượng bà đậu'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 1 lần
+   -> Nhãn 'ARTIFACT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+14. Thực thể: 'chuông lớn'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 2 lần
+   -> Nhãn 'ARTIFACT': 2 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+15. Thực thể: 'vua'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 1548 lần
+   -> Nhãn 'ORGANIZATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 10186, nhãn 'ORGANIZATION' (bất thường): **vua **thánh tổ là ông **vua **thông minh , ngài vẫn biết sự học của nước ta sai lầm , những sĩ phu trong nước chỉ học theo lối cử nghiệp , nghĩa là cốt học lấy thi đỗ , chứ không mấy người có thực học.
+   Nhãn có vẻ đúng: TITLE (1548 lần)
+--------------------------------------------------------------------------------
+16. Thực thể: 'thạch thất'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 1 lần
+   -> Nhãn 'ARTIFACT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+17. Thực thể: 'voi'
+Số nhãn khác nhau: 2
+   -> Nhãn 'FLORA_FAUNA': 86 lần
+   -> Nhãn 'ORGANIZATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 10000, nhãn 'ORGANIZATION' (bất thường): đồ cống vật là: **voi **đực cao 5 thước 2 con sừng tê giác 2 chiếc ngà **voi **2 cái hột sa nhân 50 cân đậu khấu 50 cân hoàng lạp 50 cân cánh kiến 50 cân sơn đen 20 lọ nặc ông chân có ba người em tên là nặc ông nguyên , nặc ông lem , nặc ông đôn , muốn tranh quyền của anh , mới sang cầu cứu nước tiêm la.
+   Nhãn có vẻ đúng: FLORA_FAUNA (86 lần)
+--------------------------------------------------------------------------------
+18. Thực thể: 'quan'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 247 lần
+   -> Nhãn 'PERSON': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 10266, nhãn 'PERSON' (bất thường): tháng chạp năm ấy , cả ba đạo cùng đến hội ở vân trung , rồi sai người đưa thư sang nói với **quan **nhà thanh phòng giữ , đừng cho quân giặc chạy sang bên ấy.
+   Nhãn có vẻ đúng: TITLE (247 lần)
+--------------------------------------------------------------------------------
+19. Thực thể: 'trung hoa'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 2 lần
+   -> Nhãn 'LOCATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 3901, nhãn 'LOCATION' (bất thường): đến khi cao hậu lâm triều , lại phân biệt ra **trung hoa** , ngoại di , hạ lệnh cấm không được bán cho namviệt những đồ vàng sắt và điền khí ; còn ngựa , trâu dê thì chỉ bán cho giống đực , chứ không bán cho giống cái.
+   Nhãn có vẻ đúng: DYNASTY (2 lần)
+--------------------------------------------------------------------------------
+20. Thực thể: 'vua lê thần tông'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 5 lần
+   -> Nhãn 'TITLE': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 429, nhãn 'TITLE' (bất thường): năm 1632 , vào đời **vua lê thần tông** , chùa xây dựng thượng điện 3 gian và hậu cung cùng hành lang 20 gian .
+   Nhãn có vẻ đúng: PERSON (5 lần)
+--------------------------------------------------------------------------------
+21. Thực thể: 'cung'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 17 lần
+   -> Nhãn 'ARTIFACT': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 5594, nhãn 'ARTIFACT' (bất thường): quân nhật duật bấy giờ có bọn triệu trung là tướng nhà tống sang xin tùng chinh , mặc áo đeo **cung **như quân nhà tống.
+      • Dòng 7975, nhãn 'ARTIFACT' (bất thường): ngờ đâu: chim bay đã hết , **cung **tốt cất đi , thỏ nhanh chết rồi , chó săn phải giết ; đến khi công việc xong rồi , thì không những là một thân mình cũng không được trọn vẹn mà cả họ hàng thường cũng phải vạ lây.
+   Nhãn có vẻ đúng: ARCHITECTURE (17 lần)
+--------------------------------------------------------------------------------
+22. Thực thể: 'vân phong'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'LOCATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+23. Thực thể: 'nhập niết bàn'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'EVENT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+24. Thực thể: 'cầu'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 2 lần
+   -> Nhãn 'ACTION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2070, nhãn 'ACTION' (bất thường): có người tâu rằng : sao không **cầu **long vương đưa âm quân lên giúp .
+   Nhãn có vẻ đúng: ARCHITECTURE (2 lần)
+--------------------------------------------------------------------------------
+25. Thực thể: 'quả chuông'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 1 lần
+   -> Nhãn 'ARTIFACT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+26. Thực thể: 'chung'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 1 lần
+   -> Nhãn 'ARTIFACT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+27. Thực thể: 'giặc minh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 14 lần
+   -> Nhãn 'ORGANIZATION': 8 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 6351, nhãn 'ORGANIZATION' (bất thường): xem công việc của hồ quý ly làm thì không phải là một người tầm thường , nhưng tiếc thay một người có tài kinh tế như thế , mà giả sử cứ giúp nhà trần cho có thủy chung , thì dẫu **giặc minh** có thế mạnh đến đâu đi nữa , cũng chưa hầu dễ đã cướp được nước nam , mà mình lại được cái tiếng thơm để lại nghìn thu.
+      • Dòng 7462, nhãn 'ORGANIZATION' (bất thường): may lúc ấy có một đấng anh hùng nổi lên , kéo cờ nghĩa để chống với **giặc minh** , trong 10 năm ấy lại được giang sơn cũ , và xây đắp lại nền độc lập cho nước nam.
+      • Dòng 7468, nhãn 'ORGANIZATION' (bất thường): việc đánh **giặc minh** tuy là thuận lòng người và hợp lẽ công bằng , nhưng mà thế lực của bình định vương lúc đầu còn kém lắm , tướng sĩ thì ít , lương thực không đủ.
+      • Dòng 7782, nhãn 'ORGANIZATION' (bất thường): **giặc minh** lục tục về bắc , bấy giờ mới thật là: nam quốc sơn hà , nam đế cư ; nước nam lại được tự chủ như cũ.
+      • Dòng 7785, nhãn 'ORGANIZATION' (bất thường): bình định vương dẹp xong **giặc minh** rồi , sai ông nguyễn trãi làm tờ bá cáo cho thiên hạ biết.
+   Nhãn có vẻ đúng: DYNASTY (14 lần)
+--------------------------------------------------------------------------------
+28. Thực thể: 'lam sơn'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 28 lần
+   -> Nhãn 'DYNASTY': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 6742, nhãn 'DYNASTY' (bất thường): những sự kiện tiêu biểu thời bắc thuộc là kháng chiến chống tống (1075–1077), chiến thắng bạch đằng (938), khởi nghĩa **lam sơn** (1418–1427), chiến thắng chi lăng (1427) và cuộc tấn công đà nẵng (1858), mỗi mốc đều đánh dấu bước ngoặt lớn của dân tộc.
+   Nhãn có vẻ đúng: LOCATION (28 lần)
+--------------------------------------------------------------------------------
+29. Thực thể: 'quân minh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 16 lần
+   -> Nhãn 'ORGANIZATION': 58 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 172, nhãn 'DYNASTY' (bất thường): **quân minh** thiếu vũ khí đạn dược , tướng minh là vương thông bèn đem phá chuông quy điền lấy đồng .
+      • Dòng 173, nhãn 'DYNASTY' (bất thường): **quân minh** thua , đất nước ta lại được hưởng nền thịnh trị thái bình nhưng chuông quy điền thì không còn nữa .
+      • Dòng 331, nhãn 'DYNASTY' (bất thường): truyền thuyết còn kể rằng vào đầu thế kỷ xv , **quân minh** xâm lược nước ta , có một toán giặc nghe nói chùa tiên lữ rất thiêng , bèn phóng hỏa đốt chùa , phá tượng .
+      • Dòng 926, nhãn 'DYNASTY' (bất thường): ngày mười_sáu , có tên bầy_tôi làm phản , tên là ái ( người trại nguyệt_ấn ) , cùng với đỗ phú dẫn **quân minh** đào lấy tiểu đựng hài_cốt ở xứ phật_hoàng , treo ở sau thuyền , hẹn nhà_vua phải ra hàng .
+      • Dòng 1367, nhãn 'DYNASTY' (bất thường): khi bọn vương thông về tới long_châu , vua minh đã biết trước **quân minh** cùn_quẫn , việc đã đến thế , không còn làm thế nào được .
+   Nhãn có vẻ đúng: ORGANIZATION (58 lần)
+--------------------------------------------------------------------------------
+30. Thực thể: 'thần'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 40 lần
+   -> Nhãn 'ORGANIZATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 4491, nhãn 'ORGANIZATION' (bất thường): nói đến việc quỉ **thần **thì ngài bảo rằng: " quỉ **thần **kính nhi viễn chi " , quỉ **thần **thì nên kính , mà không nên nói đến.
+   Nhãn có vẻ đúng: TITLE (40 lần)
+--------------------------------------------------------------------------------
+31. Thực thể: 'cung đình'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 18 lần
+   -> Nhãn 'LOCATION': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1898, nhãn 'LOCATION' (bất thường): 3 . tiện phục các kiểu dáng trang phục từng lưu hành trong **cung đình** và dân gian việt nam đa phần đều là dạng áo xẻ tà ở hai bên sườn .
+      • Dòng 7306, nhãn 'LOCATION' (bất thường): bộ lễ là cơ quan chịu trách nhiệm soạn thảo và giám sát việc thực thi các nghi thức quan trọng trong **cung đình**.
+   Nhãn có vẻ đúng: ARCHITECTURE (18 lần)
+--------------------------------------------------------------------------------
+32. Thực thể: 'bồ_tát'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 3 lần
+   -> Nhãn 'TITLE': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 409, nhãn 'TITLE' (bất thường): vào trong động , du khách chiêm ngưỡng tượng bà chúa ba ( **bồ_tát** quan thế âm ) cùng nhiều tượng phật , **bồ_tát** ?
+      • Dòng 651, nhãn 'TITLE' (bất thường): tháng 7 năm 1696 , trước khi trở về trung quốc , ngài đã truyền giới **bồ_tát** cho chúa nguyễn phúc chu , ban đạo hiệu là thiên túng đạo nhân , nối pháp đời thứ 30 tào động chánh tông .
+   Nhãn có vẻ đúng: PERSON (3 lần)
+--------------------------------------------------------------------------------
+33. Thực thể: 'đội'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 106 lần
+   -> Nhãn 'ORGANIZATION': 6 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 6250, nhãn 'ORGANIZATION' (bất thường): mỗi vệ có 18 **đội **, mỗi **đội **có 18 người.
+      • Dòng 9490, nhãn 'ORGANIZATION' (bất thường): quân thì chia ra làm đạo , cơ , **đội**.
+      • Dòng 9491, nhãn 'ORGANIZATION' (bất thường): đạo thì thống các cơ , cơ thì thống các **đội**.
+      • Dòng 9492, nhãn 'ORGANIZATION' (bất thường): cơ **đội **nào theo về cơ **đội **ấy , bắt phải diễn tập luôn luôn.
+      • Dòng 9492, nhãn 'ORGANIZATION' (bất thường): cơ **đội **nào theo về cơ **đội **ấy , bắt phải diễn tập luôn luôn.
+   Nhãn có vẻ đúng: ACTION (106 lần)
+--------------------------------------------------------------------------------
+34. Thực thể: 'động'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 8 lần
+   -> Nhãn 'LOCATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 8049, nhãn 'LOCATION' (bất thường): còn ở dưới phủ huyện thì có hương , phường , xã , thôn , trang , sách , **động** , nguyên , trưởng cả thảy là.
+   Nhãn có vẻ đúng: ARCHITECTURE (8 lần)
+--------------------------------------------------------------------------------
+35. Thực thể: 'thanh trì'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 1 lần
+   -> Nhãn 'LOCATION': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 401, nhãn 'ARCHITECTURE' (bất thường): tiếp đó là chùa giải oan , nơi có giếng nước trong vắt gọi là " thiên nhiên **thanh trì** " hay còn gọi là giếng long tuyền .
+   Nhãn có vẻ đúng: LOCATION (2 lần)
+--------------------------------------------------------------------------------
+36. Thực thể: 'vàng'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARTIFACT': 70 lần
+   -> Nhãn 'TITLE': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 3126, nhãn 'TITLE' (bất thường): xiêm bằng tơ màu trắng, dệt đoàn loan (hoa tròn trong có hình chim loan). - cung tần bậc 4: mũ nhất phụng, cặp tóc bằng **vàng**, trâm hoa.
+   Nhãn có vẻ đúng: ARTIFACT (70 lần)
+--------------------------------------------------------------------------------
+37. Thực thể: 'quân nguyên'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 8 lần
+   -> Nhãn 'ORGANIZATION': 32 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 512, nhãn 'DYNASTY' (bất thường): phúc lâm tự xứng đáng là một di tích kiến trúc cổ kính , một danh lam nơi đất cảng hải phòng chùa tháp ( phồ minh tự ) nhà trần là một triều đại làm vẻ vang cho lịch sử dân tộc việt nam với ba lần đại thắng **quân nguyên** xâm lược vào thế kỷ xiii .
+      • Dòng 5468, nhãn 'DYNASTY' (bất thường): các quan , người thì nói nên để cho **quân nguyên** mượn đường , người thì bảo nên đưa đồ sang cống để xin hoãn binh.
+      • Dòng 5485, nhãn 'DYNASTY' (bất thường): **quân nguyên** chia ra làm hai đạo: một đạo do tướng mông cổ là toa đô đem 10 vạn quân từ quảng châu đi hải đạo sang đánh chiêm thành ; còn thoát hoan thì kéo đại binh đến ải quan , sai người đưa thư sang nói cho mượn đường đi đánh chiêm thành.
+      • Dòng 5638, nhãn 'DYNASTY' (bất thường): ra đánh ; sai hai con là hưng võ vương nghiễn và hưng hiếu vương úy dẫn 3 vạn quân đi đường hải dương ra mặt quảng yên , giữ chặn đường về châu tư minh ; hưng đạo vương tự dẫn đại quân lên bắc giang đánh **quân nguyên**.
+      • Dòng 5639, nhãn 'DYNASTY' (bất thường): **quân nguyên** thua chạy , thoát hoan dẫn đại binh chạy đến bến vạn kiếp , gặp bọn nguyễn khoái ra đánh , **quân nguyên** mười phần tổn hại mất năm.
+   Nhãn có vẻ đúng: ORGANIZATION (32 lần)
+--------------------------------------------------------------------------------
+38. Thực thể: 'trung quốc'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 36 lần
+   -> Nhãn 'LOCATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2112, nhãn 'LOCATION' (bất thường): ( thời chu thành vương người **trung quốc** chưa khám phá ra kim chỉ nam , có lẽ là cũng phải 600 năm đến 1000 năm sau đó kim chỉ nam mới được biết đến ở **trung quốc** .
+   Nhãn có vẻ đúng: DYNASTY (36 lần)
+--------------------------------------------------------------------------------
+39. Thực thể: 'an nam'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 88 lần
+   -> Nhãn 'DYNASTY': 6 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 5647, nhãn 'DYNASTY' (bất thường): trong sáu tháng trời , từ tháng chạp năm giáp thân (1284) đến tháng sáu năm ất dậu (1285) , quân **an nam** đuổi 50 vạn quân mông cổ ra ngoài bờ cỏi , chỉnh đốn giang sơn lại như cũ.
+      • Dòng 7613, nhãn 'DYNASTY' (bất thường): vương thông liệu tất thế nào quân **an nam** cũng đến đánh , bèn phục binh và phòng bị trước cả.
+      • Dòng 7637, nhãn 'DYNASTY' (bất thường): vả lại sử chép rằng đánh trận tụy động quân **an nam** giết được hơn 5 vạn quân minh , lại bắt được hơn 1 vạn người , như thế chẳng hóa ra quân minh hèn lắm ru !
+      • Dòng 8480, nhãn 'DYNASTY' (bất thường): vua nhà minh đã sai quan đi đến vân nam cùng với quan tuầnphủ sở tại tra xét bên **an nam** thực hư thế nào.
+      • Dòng 9337, nhãn 'DYNASTY' (bất thường): vua quang trung cưỡi voi đi sau đốc chiến , quân **an nam** vào đến gần cửa đồn , bỏ ván xuống đất , rút dao ra , xông vào chém , quân đi sau cũng kéo ùa cả vào đánh.
+   Nhãn có vẻ đúng: LOCATION (88 lần)
+--------------------------------------------------------------------------------
+40. Thực thể: 'giặc nguyên'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 3 lần
+   -> Nhãn 'ORGANIZATION': 4 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 572, nhãn 'DYNASTY' (bất thường): nhưng làm vua mà hai lần lãnh đạo nhân dân đánh đuổi **giặc nguyên** , đuổi xong giặc lại chuyên tâm với kinh phật , rồi tìm nơi tu luyện , lập ra cả một thiền phái , thì chỉ có vua trần nhân tông ( 1258 _ 1308 ) mà thôi .
+      • Dòng 5529, nhãn 'DYNASTY' (bất thường): bởi cớ sảo bởi **giặc nguyên** cùng ta , là kẻ thù không đội trời chung , thế mà các ngươi cứ điềm nhiên không nghĩ đến việc báo thù , lại không biết dạy quân sĩ , khác nào như quay ngọn giáo mà đi theo kẻ thù , giơ tay không mà chịu thu quân giặc , khiến cho sau trận bình lỗ45 mà ta phải chịu tiếng xấu muôn đời , thì còn mặt mũi nài đứng trong trời đất nữa.
+      • Dòng 5829, nhãn 'DYNASTY' (bất thường): phạm ngũ lão là người làng phù ủng , huyện mỹ hào , tỉnh hải dương59 , trước theo trần hưng đạo vương đánh **giặc nguyên** , lập được công to.
+   Nhãn có vẻ đúng: ORGANIZATION (4 lần)
+--------------------------------------------------------------------------------
+41. Thực thể: 'thái bình'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 4 lần
+   -> Nhãn 'CONCEPT': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2068, nhãn 'CONCEPT' (bất thường): ( trần đình hoành bình ) truyện phù đổng thiên vương thời hùng vương , thiên hạ **thái bình** , dân gian giàu có .
+   Nhãn có vẻ đúng: LOCATION (4 lần)
+--------------------------------------------------------------------------------
+42. Thực thể: 'chùa thờ phật'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 1 lần
+   -> Nhãn 'LOCATION': 3 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 625, nhãn 'ARCHITECTURE' (bất thường): sau đó là **chùa thờ phật** , gồm 3 ngôi nhà nối vào nhau .
+   Nhãn có vẻ đúng: LOCATION (3 lần)
+--------------------------------------------------------------------------------
+43. Thực thể: 'tắm'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 2 lần
+   -> Nhãn 'FLORA_FAUNA': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2425, nhãn 'FLORA_FAUNA' (bất thường): nhà nước có cơ sở nuôi **tắm**, dệt lụa.
+   Nhãn có vẻ đúng: ACTION (2 lần)
+--------------------------------------------------------------------------------
+44. Thực thể: 'mạc'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 25 lần
+   -> Nhãn 'LOCATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 7157, nhãn 'LOCATION' (bất thường): những mốc lớn thời nguyễn như khởi nghĩa hai bà trưng (40–43), rạch gầm – xoài mút (1785), nội chiến lê – **mạc** (1533–1592), tốt động – chúc động (1426) và ngọc hồi – đống đa (1789) thường được nhắc lại trong sử biên niên.
+   Nhãn có vẻ đúng: DYNASTY (25 lần)
+--------------------------------------------------------------------------------
+45. Thực thể: 'nhân thời mở vận'
+Số nhãn khác nhau: 2
+   -> Nhãn 'EVENT': 1 lần
+   -> Nhãn 'CONCEPT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+46. Thực thể: 'trung'
+Số nhãn khác nhau: 2
+   -> Nhãn 'CONCEPT': 2 lần
+   -> Nhãn 'PERSON': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1349, nhãn 'PERSON' (bất thường): bọn khả , **trung** , đại thừa thắng tung quân đuổi đánh , chém hơn vạn đầu , bắt được năm nghìn con ngựa ; cùng là khí_giới , vàng bạc , của báu , lụa là , không thể đếm xiết .
+   Nhãn có vẻ đúng: CONCEPT (2 lần)
+--------------------------------------------------------------------------------
+47. Thực thể: 'tề'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'DYNASTY': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 736, nhãn 'ACTION' (bất thường): cùng với : bài đại_cáo khi bình giặc ngô , đều là những lời trung , nghĩa , trí , dũng ; lẽ phải_chăng dạy lại con_cháu , đều là những đạo tu , **tề** , trị , bình , ... xét ra những việc mà chính mình nhà vua đã làm , không việc gì là không chép đủ .
+   Nhãn có vẻ đúng: DYNASTY (2 lần)
+--------------------------------------------------------------------------------
+48. Thực thể: 'gây_dựng nghiệp đế'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'EVENT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+49. Thực thể: 'bảo'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 22 lần
+   -> Nhãn 'COSTUME': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 3176, nhãn 'COSTUME' (bất thường): nhưng cũng có một số chỉ tiết thêm bớt đại lược như sau: phẩm phục đại triều, phâm phục thường triều cấp cho các quan văn từ lục phẩm trở lên; các quan võ và tương đương từ tam phẩm trở lên gồm mũ, ' **bảo**, xiêm, đai lưng, tất, hia.
+   Nhãn có vẻ đúng: ACTION (22 lần)
+--------------------------------------------------------------------------------
+50. Thực thể: 'đông_các'
+Số nhãn khác nhau: 2
+   -> Nhãn 'FLORA_FAUNA': 1 lần
+   -> Nhãn 'ORGANIZATION': 3 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 760, nhãn 'FLORA_FAUNA' (bất thường): đặc_tiến kim_tử vinh_lộc đại_phu , tham_tụng , công_bộ thượng_thư , kiêm **đông_các **đại_học_sĩ , coi việc chép quốc_sử , duệ_quận_công , thượng_trụ quốc , tôi là hồ sĩ dương .
+   Nhãn có vẻ đúng: ORGANIZATION (3 lần)
+--------------------------------------------------------------------------------
+51. Thực thể: 'khoan_thái_bà'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 1 lần
+   -> Nhãn 'ORGANIZATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+52. Thực thể: 'họ lê'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 6 lần
+   -> Nhãn 'ORGANIZATION': 10 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 796, nhãn 'DYNASTY' (bất thường): đức tằng_tổ nhà vua , **họ lê** , tên húy là hối người thôn như_áng , huyện lương_giang ( tức là huyện ngụy_nguyên ngày nay ) phủ thanh_hóa .
+      • Dòng 1716, nhãn 'DYNASTY' (bất thường): đức tằng_tổ nhà vua , **họ lê** , tên húy là hối người thôn như_áng , huyện lương_giang ( tức là huyện ngụy_nguyên ngày nay ) phủ thanh_hóa .
+      • Dòng 8528, nhãn 'DYNASTY' (bất thường): nhà mạc sai mạc kính điển , là chú mạc phúc nguyên cầm quân đi đánh **họ lê**.
+      • Dòng 8552, nhãn 'DYNASTY' (bất thường): từ năm ất mão (1579) trở đi , mạc kính điển mất rồi , mạc đôn nhượng đem binh vào đánh **họ lê** , nhưng cũng không được trận nào.
+      • Dòng 8607, nhãn 'DYNASTY' (bất thường): ít lâu ngọc liễn chết có để thư lại dặn kính cung rằng: " nay **họ lê** lại dấy lên được , ấy là số trời đã định ; còn dân ta thì có tội gì , mà ta nỡ để khổ sở mãi về việc chiến tranh ?
+   Nhãn có vẻ đúng: ORGANIZATION (10 lần)
+--------------------------------------------------------------------------------
+53. Thực thể: 'đinh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 2 lần
+   -> Nhãn 'DYNASTY': 10 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 806, nhãn 'PERSON' (bất thường): đức hoàng_tổ húy là **đinh** , nối được nghiệp nhà , để kế chí người trước .
+      • Dòng 1720, nhãn 'PERSON' (bất thường): đức hoàng_tổ húy là **đinh** , nối được nghiệp nhà , để kế chí người trước .
+   Nhãn có vẻ đúng: DYNASTY (10 lần)
+--------------------------------------------------------------------------------
+54. Thực thể: 'học'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'ACTION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+55. Thực thể: 'trừ'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'ACTION': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 821, nhãn 'PERSON' (bất thường): sinh ba con trai : trưởng là học , thứ là **trừ** , út tức là nhà_vua .
+   Nhãn có vẻ đúng: ACTION (2 lần)
+--------------------------------------------------------------------------------
+56. Thực thể: 'phi'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'TITLE': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+57. Thực thể: 'họ trần'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 8 lần
+   -> Nhãn 'ORGANIZATION': 3 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 7649, nhãn 'ORGANIZATION' (bất thường): vương thông ở đông quan cứ bị thua mãi , liệu thế đánh không được nữa , muốn bãi binh về tàu , nhưng sợ mang tiếng , bèn lục tờ chiếu của vua nhà minh , niên hiệu vĩnh lạc (1407) , nói về việc tìm con cháu **họ trần** , rồi cho người ra nói với bình định vương tìm người dòng dõi **họ trần** lập lên , để xin bãi binh.
+      • Dòng 7649, nhãn 'ORGANIZATION' (bất thường): vương thông ở đông quan cứ bị thua mãi , liệu thế đánh không được nữa , muốn bãi binh về tàu , nhưng sợ mang tiếng , bèn lục tờ chiếu của vua nhà minh , niên hiệu vĩnh lạc (1407) , nói về việc tìm con cháu **họ trần** , rồi cho người ra nói với bình định vương tìm người dòng dõi **họ trần** lập lên , để xin bãi binh.
+      • Dòng 7763, nhãn 'ORGANIZATION' (bất thường): sau khi đã dẹp yên rồi , ngài có hạ chiếu tìm con cháu **họ trần** để giữ lấy dòng dõi cúng tế.
+   Nhãn có vẻ đúng: DYNASTY (8 lần)
+--------------------------------------------------------------------------------
+58. Thực thể: 'họ hồ'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 4 lần
+   -> Nhãn 'ORGANIZATION': 12 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1048, nhãn 'DYNASTY' (bất thường): khi ấy có cháu ngoại của họ trần , tên là cầm quý , lánh **họ hồ** , trốn vào rừng núi , xưng láo là dòng dõi vua trần .
+      • Dòng 6304, nhãn 'DYNASTY' (bất thường): nhà minh đánh **họ hồ**.
+      • Dòng 6311, nhãn 'DYNASTY' (bất thường): tuy rằng nhà hồ trước đã phòng bị , nhưng mà tướng nhà minh biết rằng người an nam không phục **họ hồ** , bèn làm hịch kể tội **họ hồ** , và nói rằng quân tàu sang là để lập dòng dõi nhà trần lên , cứu cho dân khỏi sự khổ sở.
+      • Dòng 6311, nhãn 'DYNASTY' (bất thường): tuy rằng nhà hồ trước đã phòng bị , nhưng mà tướng nhà minh biết rằng người an nam không phục **họ hồ** , bèn làm hịch kể tội **họ hồ** , và nói rằng quân tàu sang là để lập dòng dõi nhà trần lên , cứu cho dân khỏi sự khổ sở.
+   Nhãn có vẻ đúng: ORGANIZATION (12 lần)
+--------------------------------------------------------------------------------
+59. Thực thể: 'thần_nhân'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'TITLE': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+60. Thực thể: 'giáp'
+Số nhãn khác nhau: 2
+   -> Nhãn 'COSTUME': 1 lần
+   -> Nhãn 'ARTIFACT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+61. Thực thể: 'lễ'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'EVENT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+62. Thực thể: 'hưng đạo vương'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 21 lần
+   -> Nhãn 'TITLE': 45 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1269, nhãn 'PERSON' (bất thường): nói rằng : " xưa kia ô mã nhi thua ở sông bạch_đằng , đem quân ra đầu hàng , rồi bị ông quận vạn_kiếp ( tức **hưng đạo vương** ) dùng mưu đánh lừa .
+      • Dòng 5421, nhãn 'PERSON' (bất thường): xem bài hịch của **hưng đạo vương** , thơ của ông trần quan khải và của ông phạm ngũ lão thì biết là văn chương đời bấy giờ có khí lực mạnh mẽ lắm.
+      • Dòng 5435, nhãn 'PERSON' (bất thường): **hưng đạo vương** đem vua về thanh hóa.
+      • Dòng 5494, nhãn 'PERSON' (bất thường): thoát hoan thấy **hưng đạo vương** giữ cả các nơi , liền tiến binh lên đánh núi kì cấp , ải khả li và ải lộc châu.
+      • Dòng 5497, nhãn 'PERSON' (bất thường): thoát hoan dẫn đại binh đến đánh chilăng , **hưng đạo vương** kém thế , thua chạy ra bến bái tân , xuống thuyền cùng với bọn gia tướng , là dã tượng và yết kiêu về vạn kiếp.
+   Nhãn có vẻ đúng: TITLE (45 lần)
+--------------------------------------------------------------------------------
+63. Thực thể: 'gấm'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARTIFACT': 4 lần
+   -> Nhãn 'COSTUME': 3 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 3055, nhãn 'COSTUME' (bất thường): bên trong là áo đơn màu bạch tuyết, cửa tay thêu hình rồng mây. - xiêm bằng sa màu vàng, dưới viền **gấm**, thêu họoa tiết ngọn lửa, hạt gạo, hình phất (hình chữ á), hình phủ (hình lưỡi rìu, lưỡi búa)..., lại còn đính các thứ ngọc bội, khánh ngọc, ngọc huỳnh, hạt văn mấu, san hô, hỡ phách... khi đi lại, các thứ đó va chạm vào nhau, phát ra âm thanh. - trâm bằng ngọc, thân khám hình rồng bằng trần châu. - đại làm bằng da bọc đoạn màu vàng, giữa đính một miếng ngọc trắng hình vuông, xung quanh gắn 6 viên ngọc trắng hình quả trám, bịt vàng 392 hạt châu ngọc.
+      • Dòng 3504, nhãn 'COSTUME' (bất thường): các loại áo dài bằng vải quí như **gấm** (có hoa văn chữ thọ).
+      • Dòng 3556, nhãn 'COSTUME' (bất thường): con nhà giàu ổ thành thị, nữ mặc áo dài trắng bằng lụa hay **gấm**, sa tanh các màu, cãi cúc cạnh sườn.
+   Nhãn có vẻ đúng: ARTIFACT (4 lần)
+--------------------------------------------------------------------------------
+64. Thực thể: 'hà trung'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'LOCATION': 6 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1353, nhãn 'PERSON' (bất thường): ngày mười_sáu tháng chạp , tướng giặc là vương thông , mã ánh , lý an , trần trí , nội_quan là mã kỳ , sơn thọ , phương chính , đặc khiêm , cùng các viên chỉ_huy giữ thành tây_đô là **hà trung** , giữ thành chí_linh là cao tường , bèn đem tất cả các hạng ngụy quan ( người nước ta làm quan với giặc ) lớn , nhỏ , và những nhân_dân nước ta bị bắt hiếp vào trong thành , đưa trả về đủ số .
+   Nhãn có vẻ đúng: LOCATION (6 lần)
+--------------------------------------------------------------------------------
+65. Thực thể: 'nghĩa_sĩ'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 1 lần
+   -> Nhãn 'ORGANIZATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+66. Thực thể: 'thông sứ'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 4 lần
+   -> Nhãn 'ACTION': 3 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 3903, nhãn 'ACTION' (bất thường): cao hậu nghe thấy thế , lấy làm tức giận , đem tước bộ sổ nam việt đi , không cho **thông sứ **, lão phu trộm nghĩ rằng hẳn vì trường sa vương gièm pha , cho nên lão phu có đem binh đánh.
+      • Dòng 5032, nhãn 'ACTION' (bất thường): từ đó nước ta và nước tàu lại **thông sứ** như cũ.
+      • Dòng 8632, nhãn 'ACTION' (bất thường): từ đó nhà minh với nhà lê lại **thông sứ** như trước.
+   Nhãn có vẻ đúng: TITLE (4 lần)
+--------------------------------------------------------------------------------
+67. Thực thể: 'nguyên'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 50 lần
+   -> Nhãn 'LOCATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 8049, nhãn 'LOCATION' (bất thường): còn ở dưới phủ huyện thì có hương , phường , xã , thôn , trang , sách , động , **nguyên** , trưởng cả thảy là.
+   Nhãn có vẻ đúng: DYNASTY (50 lần)
+--------------------------------------------------------------------------------
+68. Thực thể: 'quân lào'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 1 lần
+   -> Nhãn 'ORGANIZATION': 6 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1511, nhãn 'DYNASTY' (bất thường): nguyên trước nhà_vua kinh_doanh việc bốn phương , bắc đánh giặc minh , nam đuổi **quân lào** , mình trải trăm trận , đến đâu được đấy , chỉ dùng có quan võ là bọn lê thạch , lê lễ , lê sát , lê vấn , lê lý , lê ngân , ba mươi lăm người ; quan văn là bọn lê văn linh , lê quốc hưng ; cùng những quân_thân như cha , con ; hai trăm thiết_kỵ , hai trăm nghĩa_sĩ , hai trăm dũng_sĩ và mười bốn thớt voi .
+   Nhãn có vẻ đúng: ORGANIZATION (6 lần)
+--------------------------------------------------------------------------------
+69. Thực thể: 'người minh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 3 lần
+   -> Nhãn 'ORGANIZATION': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 7775, nhãn 'ORGANIZATION' (bất thường): bấy giờ có người xui vương rằng: lúc trước **người minh** tàn ác lắm , nên đem giết cả đi.
+      • Dòng 7779, nhãn 'ORGANIZATION' (bất thường): vương không giết **người minh** lại cấp cho thủy quân 500 chiếc thuyền giao cho phương chính và mã kỳ quản lĩnh ; cấp lương thảo cho lục quân giao cho sơn thọ , hoàng phúc quản lĩnh ; còn 2 vạn người đã ra hàng và đã bị bắt thì giao cho mã anh quản lĩnh đem về tàu.
+   Nhãn có vẻ đúng: DYNASTY (3 lần)
+--------------------------------------------------------------------------------
+70. Thực thể: 'quận'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 1 lần
+   -> Nhãn 'TITLE': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+71. Thực thể: 'trưởng'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 16 lần
+   -> Nhãn 'LOCATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 8049, nhãn 'LOCATION' (bất thường): còn ở dưới phủ huyện thì có hương , phường , xã , thôn , trang , sách , động , nguyên , **trưởng** cả thảy là.
+   Nhãn có vẻ đúng: TITLE (16 lần)
+--------------------------------------------------------------------------------
+72. Thực thể: 'họ nguyễn'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 7 lần
+   -> Nhãn 'ORGANIZATION': 48 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1643, nhãn 'DYNASTY' (bất thường): hoàng_tổ_tỷ **họ nguyễn** , rất có nết hiền , sinh hai con : trưởng là tòng , thứ là khoáng , ấy là : hoàng_khảo của nhà_vua : hoà_nhã , hiền_lành , vui_vẻ , thích làm việc thiện , chiêu_đãi khách_khứa .
+      • Dòng 5226, nhãn 'DYNASTY' (bất thường): thủ độ đã hại hết cả dòng dỏi họ lý , lại muốn cho họ lý không còn ai nhớ đến họ lý nửa , mới nhân vì tổ nhà trần tên là lý , bắt trong nước ai là họ lý đều phải cải là **họ nguyễn**.
+      • Dòng 8497, nhãn 'DYNASTY' (bất thường): **họ nguyễn** khởi nghĩa giúp nhà lê.
+      • Dòng 8658, nhãn 'DYNASTY' (bất thường): và chăng mặt nam còn có **họ nguyễn** , thế lực cũng chẳng kém hơn gì , mà lại có ý độc lập để tranh quyền với họ trịnh.
+      • Dòng 8680, nhãn 'DYNASTY' (bất thường): lập bạo mừng rỡ , không phòng bị gì cả , bị quân **họ nguyễn** đánh lẻn , bắt được giết đi , và đánh tan quân nhà mạc.
+   Nhãn có vẻ đúng: ORGANIZATION (48 lần)
+--------------------------------------------------------------------------------
+73. Thực thể: 'văn'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 1 lần
+   -> Nhãn 'LOCATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+74. Thực thể: 'thanh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 1 lần
+   -> Nhãn 'DYNASTY': 7 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1759, nhãn 'LOCATION' (bất thường): 3 theo thiên vũ cống trong kinh thư , chín châu là ký , duyện , **thanh **, từ , dương , kinh , dự , lương ung .
+   Nhãn có vẻ đúng: DYNASTY (7 lần)
+--------------------------------------------------------------------------------
+75. Thực thể: 'dương'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 1 lần
+   -> Nhãn 'FLORA_FAUNA': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+76. Thực thể: 'kinh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 1 lần
+   -> Nhãn 'ARTIFACT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+77. Thực thể: 'xung thiên thần vương'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 2 lần
+   -> Nhãn 'PERSON': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2080, nhãn 'PERSON' (bất thường): sau vua lý thái tổ phong làm** xung thiên thần vương** ( 4 ) , lập miếu thờ ở làng phù đổng cạnh chùa kiến sơ , lại tạc tượng ở núi vệ linh , xuân thu hai mùa tế lễ .
+   Nhãn có vẻ đúng: TITLE (2 lần)
+--------------------------------------------------------------------------------
+78. Thực thể: 'sở'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 1 lần
+   -> Nhãn 'ORGANIZATION': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1791, nhãn 'DYNASTY' (bất thường): nhâm tý , năm thứ 9 , ( đông chu quân năm thứ 7 ; 7 nước là tần , **sở** , yên , triệu , ngụy , hàn , tề ) .
+   Nhãn có vẻ đúng: ORGANIZATION (2 lần)
+--------------------------------------------------------------------------------
+79. Thực thể: 'hàn'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 1 lần
+   -> Nhãn 'PERSON': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+80. Thực thể: 'họ lý'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 4 lần
+   -> Nhãn 'ORGANIZATION': 3 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 5226, nhãn 'ORGANIZATION' (bất thường): thủ độ đã hại hết cả dòng dỏi **họ lý** , lại muốn cho **họ lý** không còn ai nhớ đến **họ lý** nửa , mới nhân vì tổ nhà trần tên là lý , bắt trong nước ai là **họ lý** đều phải cải là họ nguyễn.
+      • Dòng 5226, nhãn 'ORGANIZATION' (bất thường): thủ độ đã hại hết cả dòng dỏi **họ lý** , lại muốn cho **họ lý** không còn ai nhớ đến **họ lý** nửa , mới nhân vì tổ nhà trần tên là lý , bắt trong nước ai là **họ lý** đều phải cải là họ nguyễn.
+      • Dòng 5226, nhãn 'ORGANIZATION' (bất thường): thủ độ đã hại hết cả dòng dỏi **họ lý** , lại muốn cho **họ lý** không còn ai nhớ đến **họ lý** nửa , mới nhân vì tổ nhà trần tên là lý , bắt trong nước ai là **họ lý** đều phải cải là họ nguyễn.
+   Nhãn có vẻ đúng: DYNASTY (4 lần)
+--------------------------------------------------------------------------------
+81. Thực thể: 'truyền'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'ARTIFACT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+82. Thực thể: 'bá chủ trời nam'
+Số nhãn khác nhau: 2
+   -> Nhãn 'CONCEPT': 1 lần
+   -> Nhãn 'TITLE': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+83. Thực thể: 'võ vương'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'TITLE': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+84. Thực thể: 'người việt'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 3 lần
+   -> Nhãn 'ORGANIZATION': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 6618, nhãn 'ORGANIZATION' (bất thường): **người việt** xưa quen thuộc với trúc, tre, trâu, cau và mía ở đình chùa, qua đó phản ánh mối quan hệ chặt chẽ với thiên nhiên.
+      • Dòng 6674, nhãn 'ORGANIZATION' (bất thường): **người việt** xưa quen thuộc với sơn dương, nai, phượng và trầu không trên chiến trường, phản ánh mối quan hệ chặt chẽ với thiên nhiên.
+   Nhãn có vẻ đúng: DYNASTY (3 lần)
+--------------------------------------------------------------------------------
+85. Thực thể: 'trang sức bằng vàng bạc'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARTIFACT': 1 lần
+   -> Nhãn 'COSTUME': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+86. Thực thể: 'thiết triều'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 5 lần
+   -> Nhãn 'EVENT': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 6772, nhãn 'EVENT' (bất thường): triều hậu lê dùng áo giao lĩnh, mũ cánh chuồn, triều phục và hia trong các dịp đại lễ và **thiết triều**, nhằm khẳng định trật tự tôn ti.
+   Nhãn có vẻ đúng: ACTION (5 lần)
+--------------------------------------------------------------------------------
+87. Thực thể: 'người tống'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 1 lần
+   -> Nhãn 'ORGANIZATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+88. Thực thể: 'gia định'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 59 lần
+   -> Nhãn 'ACTION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 9035, nhãn 'ACTION' (bất thường): nay được tin **gia định** lại thất thủ , văn tiếp bèn đem quân từ phú yên về hợp với quân các đạo , đánh đuổi quân tây sơn đi , lấy lại được thành sài côn rồi cho người ra phú quốc đón nguyễn vương về.
+   Nhãn có vẻ đúng: LOCATION (59 lần)
+--------------------------------------------------------------------------------
+89. Thực thể: 'tế lễ'
+Số nhãn khác nhau: 2
+   -> Nhãn 'EVENT': 5 lần
+   -> Nhãn 'ACTION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2251, nhãn 'ACTION' (bất thường): đoạn giết súc vật **tế lễ** , đốt cúng áo mũ , tiền giấy , voi ngựa .
+   Nhãn có vẻ đúng: EVENT (5 lần)
+--------------------------------------------------------------------------------
+90. Thực thể: 'chúa trịnh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 43 lần
+   -> Nhãn 'ORGANIZATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 6676, nhãn 'ORGANIZATION' (bất thường): bộ máy giáo dục thời trung đại bao gồm chúa nguyễn, **chúa trịnh**, ngự sử đài và hàn lâm viện, tạo nên mạng lưới điều hành từ trung ương đến địa phương.
+   Nhãn có vẻ đúng: PERSON (43 lần)
+--------------------------------------------------------------------------------
+91. Thực thể: 'trịnh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 28 lần
+   -> Nhãn 'PERSON': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 8828, nhãn 'PERSON' (bất thường): **trịnh** thua to chạy về bắc , lại gặp quân thủy của họ nguyễn đón đường đuổi đánh mãi đến sông lam giang mới thôi.
+   Nhãn có vẻ đúng: DYNASTY (28 lần)
+--------------------------------------------------------------------------------
+92. Thực thể: 'hòa bình'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 1 lần
+   -> Nhãn 'CONCEPT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+93. Thực thể: 'tôn'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 1 lần
+   -> Nhãn 'ACTION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+94. Thực thể: 'hương'
+Số nhãn khác nhau: 2
+   -> Nhãn 'FLORA_FAUNA': 1 lần
+   -> Nhãn 'LOCATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+95. Thực thể: 'đàn'
+Số nhãn khác nhau: 2
+   -> Nhãn 'FLORA_FAUNA': 1 lần
+   -> Nhãn 'ARTIFACT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+96. Thực thể: 'hầu'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'TITLE': 5 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1958, nhãn 'ACTION' (bất thường): long quân đột nhiên trở về , thấy âu cơ sống một mình , có dung mạo đẹp đẽ lạ thường , trong lòng vui mừng , bèn hóa thành một trang thiếu niên khôi ngô tuấn tú , tả hữu kẻ **hầu** người hạ đông đúc , vừa đi vừa ca hát đánh trống trước hành cung âu cơ ở . âu cơ thấy vậy , sinh lòng ưa thích .
+   Nhãn có vẻ đúng: TITLE (5 lần)
+--------------------------------------------------------------------------------
+97. Thực thể: 'mỵ nương'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 1 lần
+   -> Nhãn 'PERSON': 8 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 1973, nhãn 'TITLE' (bất thường): con trai vua gọi là quan lang , con gái vua gọi là **mỵ nương **, các quan gọi là bố chính , nô bộc gọi là trâu , con ở gái gọi là tinh .
+   Nhãn có vẻ đúng: PERSON (8 lần)
+--------------------------------------------------------------------------------
+98. Thực thể: 'dời đô'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 8 lần
+   -> Nhãn 'EVENT': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 4794, nhãn 'EVENT' (bất thường): tháng 7 năm thuận thiên nguyên niên (1010) , thì khởi sự **dời đô**.
+   Nhãn có vẻ đúng: ACTION (8 lần)
+--------------------------------------------------------------------------------
+99. Thực thể: 'bạch hạc'
+Số nhãn khác nhau: 2
+   -> Nhãn 'FLORA_FAUNA': 2 lần
+   -> Nhãn 'LOCATION': 5 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2038, nhãn 'FLORA_FAUNA' (bất thường): cây chiên đàn trong truyện này cao tốt đến nỗi **bạch hạc** đến làm tổ .
+      • Dòng 2040, nhãn 'FLORA_FAUNA' (bất thường): chiên đàn có tổ **bạch hạc** tượng trưng cho một nền văn hóa đạo đức tốt , sản sinh ra tâm thánh thiện của con người .
+   Nhãn có vẻ đúng: LOCATION (5 lần)
+--------------------------------------------------------------------------------
+100. Thực thể: 'thống lĩnh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'TITLE': 3 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2056, nhãn 'ACTION' (bất thường): nhân gặp loạn hầu cảnh , vua nhà lương bèn gọi bá tiên về , cho tì tướng là dương sàn **thống lĩnh** sĩ tốt , quang phục ăn chay lập đàn ở giữa đầm , đốt hương cầu đảo , bỗng thấy thần nhân cưỡi rồng bay vào trong đầm mà bảo quang phục rằng : ta tuy đã lên trời , nhưng linh hiển còn đó , ngươi có lòng thành cầu tới , ta đến để giúp đánh dẹp giặc loạn .
+   Nhãn có vẻ đúng: TITLE (3 lần)
+--------------------------------------------------------------------------------
+101. Thực thể: 'nam đế'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 2 lần
+   -> Nhãn 'TITLE': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2261, nhãn 'TITLE' (bất thường): vua họ triệu , tên húy là quang phục , là con triệu túc , người huyện chu diên , uy tráng dũng liệt , theo **nam đế** đi đánh dẹp có công , được trao chức tả tướng quân .
+   Nhãn có vẻ đúng: PERSON (2 lần)
+--------------------------------------------------------------------------------
+102. Thực thể: 'triệu việt vương'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 5 lần
+   -> Nhãn 'TITLE': 8 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2058, nhãn 'PERSON' (bất thường): quang phục nghe tin nam đế mất , bèn lên ngôi lấy hiệu là **triệu việt vương** , xây thành ở trâu sơn , huyện vũ ninh ( 5 ) .
+      • Dòng 2249, nhãn 'PERSON' (bất thường): đại hành đêm đến mộng thấy hai thần nhân ở trên sông , đến vái mà nói rằng : anh em thần , tên là trương hống và trương hát , xưa kia theo **triệu việt vương** ( 3 ) cầm quân chinh phạt nghịch tặc mà lấy được thiên hạ .
+      • Dòng 2260, nhãn 'PERSON' (bất thường): 3 . **triệu việt vương** : tức triệu quang phục , ở ngôi 23 năm .
+      • Dòng 4168, nhãn 'PERSON' (bất thường): **triệu việt vương**.
+      • Dòng 4191, nhãn 'PERSON' (bất thường): **triệu việt vương** (549 571).
+   Nhãn có vẻ đúng: TITLE (8 lần)
+--------------------------------------------------------------------------------
+103. Thực thể: 'tiêm'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'DYNASTY': 6 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2093, nhãn 'PERSON' (bất thường): bãi cát **tiêm** ở gọi là bãi an **tiêm** , chỗ an **tiêm** ở gọi là làng mai , nay thuộc huyện nga sơn .
+   Nhãn có vẻ đúng: DYNASTY (6 lần)
+--------------------------------------------------------------------------------
+104. Thực thể: 'giặc nam chiếu'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 2 lần
+   -> Nhãn 'ORGANIZATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 4360, nhãn 'ORGANIZATION' (bất thường): cao biền bình **giặc nam chiếu**.
+   Nhãn có vẻ đúng: DYNASTY (2 lần)
+--------------------------------------------------------------------------------
+105. Thực thể: 'long'
+Số nhãn khác nhau: 2
+   -> Nhãn 'FLORA_FAUNA': 3 lần
+   -> Nhãn 'PERSON': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 5108, nhãn 'PERSON' (bất thường): khi vua anh tông mất , thái tử **long** cán chưa đầy 3 tuổi , bà chiêu linh thái hậu muốn lập người con trưởng là con mình tên là **long** xưởng33 lên làm vua , đem vàng bạc đút lót cho vợ tô hiến thành , nhưng ông nhất thiết không chịu , bèn cứ theo dichiếu mà lập **long** cán , tức là vua cao tông.
+   Nhãn có vẻ đúng: FLORA_FAUNA (3 lần)
+--------------------------------------------------------------------------------
+106. Thực thể: 'tre'
+Số nhãn khác nhau: 2
+   -> Nhãn 'FLORA_FAUNA': 17 lần
+   -> Nhãn 'ARTIFACT': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2368, nhãn 'ARTIFACT' (bất thường): nghề trồng dâu nuôi tằm đã phổ biến và còn sản xuất được các loại vải bông thổ, vải đay, vải gai, lụa, vải cát bá loại mìn... đã biết dùng tơ** tre**, tơ chuối dệt thành vải.
+   Nhãn có vẻ đúng: FLORA_FAUNA (17 lần)
+--------------------------------------------------------------------------------
+107. Thực thể: 'nước việt thường'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 1 lần
+   -> Nhãn 'LOCATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+108. Thực thể: 'quân tống'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ORGANIZATION': 5 lần
+   -> Nhãn 'DYNASTY': 4 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2259, nhãn 'DYNASTY' (bất thường): bằng những trận đánh quyết định ở sông bạch đằng , tây kết , ninh giang , vua lê đại hành ( lê hoàn ) chém được tướng tống là hầu nhân bảo , **quân tống** thua to , chạy về nước .
+      • Dòng 5010, nhãn 'DYNASTY' (bất thường): **quân tống** mới chặt gỗ làm máy bắn đá sang như mưa , thuyền của ta thủng nát mất nhiều , quân sĩ chết hàng mấy nghìn người.
+      • Dòng 5540, nhãn 'DYNASTY' (bất thường): xem lời dặn của trần hưng đạo vương thì thành bình lỗ này xây vào đời đinh hay đời tiền lê , rồi lý thường kiệt đời lý đã đánh **quân tống** ở đó.
+      • Dòng 7371, nhãn 'DYNASTY' (bất thường): trận quyết chiến tại thành bình lệ nguyên là nơi lý thường kiệt đã chủ động tấn công để chặn đứng ý đồ xâm lược của **quân tống**.
+   Nhãn có vẻ đúng: ORGANIZATION (5 lần)
+--------------------------------------------------------------------------------
+109. Thực thể: 'giác hoàng'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 1 lần
+   -> Nhãn 'PERSON': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+110. Thực thể: 'cung cấm'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 2 lần
+   -> Nhãn 'LOCATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 8308, nhãn 'LOCATION' (bất thường): mạc đăng dung bây giờ quyền thế hống hách , ra vào **cung cấm** tiếm dụng nghi vệ thiên tử.
+   Nhãn có vẻ đúng: ARCHITECTURE (2 lần)
+--------------------------------------------------------------------------------
+111. Thực thể: 'cởi trần'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 3 lần
+   -> Nhãn 'CONCEPT': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2566, nhãn 'CONCEPT' (bất thường): thường chỉ mặc một áo xanh rộng tay, trời nóng thi **cởi trần**, cũng không có áo giáp, mũ trụ.
+      • Dòng 2586, nhãn 'CONCEPT' (bất thường): đàn ông thường **cởi trần** hoặc mặc áo tứ thân màu đen, cổ áo bằng the.
+   Nhãn có vẻ đúng: ACTION (3 lần)
+--------------------------------------------------------------------------------
+112. Thực thể: 'mảnh giáp'
+Số nhãn khác nhau: 2
+   -> Nhãn 'COSTUME': 1 lần
+   -> Nhãn 'ARTIFACT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+113. Thực thể: 'vải gai'
+Số nhãn khác nhau: 2
+   -> Nhãn 'COSTUME': 1 lần
+   -> Nhãn 'ARTIFACT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+114. Thực thể: 'lụa'
+Số nhãn khác nhau: 2
+   -> Nhãn 'COSTUME': 1 lần
+   -> Nhãn 'ARTIFACT': 10 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2368, nhãn 'COSTUME' (bất thường): nghề trồng dâu nuôi tằm đã phổ biến và còn sản xuất được các loại vải bông thổ, vải đay, vải gai, **lụa**, vải cát bá loại mìn... đã biết dùng tơ tre, tơ chuối dệt thành vải.
+   Nhãn có vẻ đúng: ARTIFACT (10 lần)
+--------------------------------------------------------------------------------
+115. Thực thể: 'ngô vương'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 9 lần
+   -> Nhãn 'TITLE': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 8333, nhãn 'TITLE' (bất thường): trịnh nguyễn phân tranh nước nam ta từ khi **ngô vương** quyền đánh đuổi được quân namhán , vua đinh tiên hoàng dẹp yên được loạn thập nhị sứ quân lập thành một nước tự chủ , đời nọ qua đời kia kế truyền được non 600 năm.
+   Nhãn có vẻ đúng: PERSON (9 lần)
+--------------------------------------------------------------------------------
+116. Thực thể: 'cắt tóc ngắn'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'CONCEPT': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2393, nhãn 'ACTION' (bất thường): hoặc (năm 980) trong một bức thư của nhà tống gửi cho triều đình ta có nói tới việc nhân dân ta thời đó đều **cắt tóc ngắn**, hoặc có nhắc đến mũ của các đạo sĩ là màu vàng, áo của các nhà sư là màu thâm, các quan được dùng ấn vàng thì thắt lưng dải tím, được dùng ấn bạc thì thắt lưng dãi xanh... sang thời tiền lê (081 - 1009), vua lê đại hành lên ngôi mặc áo long côn '), về sau áo mặc thường dùng vóc đỏó, mũ trang sức trần châu.
+   Nhãn có vẻ đúng: CONCEPT (2 lần)
+--------------------------------------------------------------------------------
+117. Thực thể: 'ngũ phẩm'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 4 lần
+   -> Nhãn 'LOCATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2758, nhãn 'LOCATION' (bất thường): các quan từ tử phẩm đến **ngũ phẩm**: mũ về hàng võ đội nón màu trắng (chóp bạc), về hàng văn đội mũ tiểu phác đầu, cánh chuốồn trang sức đồng bạch.
+   Nhãn có vẻ đúng: TITLE (4 lần)
+--------------------------------------------------------------------------------
+118. Thực thể: 'hổ phù'
+Số nhãn khác nhau: 2
+   -> Nhãn 'COSTUME': 10 lần
+   -> Nhãn 'ARTIFACT': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 7737, nhãn 'ARTIFACT' (bất thường): bình định vương sai đưa bọn hoàng phúc và hai cái **hổ phù** , hai dấu đài ngân của quan chinh lỗ phó tướng quân về đông quan cho vương thông biết.
+   Nhãn có vẻ đúng: COSTUME (10 lần)
+--------------------------------------------------------------------------------
+119. Thực thể: 'bắc bình vương'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'TITLE': 9 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 2718, nhãn 'PERSON' (bất thường): ngày 22 tháng 12 năm 1788, trong buổi lên đàn làm tế lễ cáo trời đất lên ngôi hoàng đế **bắc bình vương**.
+   Nhãn có vẻ đúng: TITLE (9 lần)
+--------------------------------------------------------------------------------
+120. Thực thể: 'nội giám'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ORGANIZATION': 1 lần
+   -> Nhãn 'TITLE': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+121. Thực thể: 'đại lễ'
+Số nhãn khác nhau: 2
+   -> Nhãn 'EVENT': 3 lần
+   -> Nhãn 'DYNASTY': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 4335, nhãn 'DYNASTY' (bất thường): bấy giờ nam chiếu đã mạnh lắm , bèn xưng đế và đặt quốc hiệu là đại mông rồi lại đổi là **đại lễ**19.
+   Nhãn có vẻ đúng: EVENT (3 lần)
+--------------------------------------------------------------------------------
+122. Thực thể: 'lê phục'
+Số nhãn khác nhau: 2
+   -> Nhãn 'COSTUME': 1 lần
+   -> Nhãn 'PERSON': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 3046, nhãn 'COSTUME' (bất thường): xiêm, đại, hia... được sử dụng trong các dịp nghỉị lễ khác nhau, đều phải theo quy định: **lê phục** của vua trong tế giao: - mũ miện, thân mũ trôn ốông, đan bằăng dây thau, rộng hẹp tùy cỡ đầu, mặt ngoài bọc lụa màu huyền, trong lót lụa màu đó, giữa đính 2 chữ vạn thọ hoặc chữ thiên địa bằng vàng.
+   Nhãn có vẻ đúng: PERSON (2 lần)
+--------------------------------------------------------------------------------
+123. Thực thể: 'hoa vàng'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARTIFACT': 2 lần
+   -> Nhãn 'FLORA_FAUNA': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 3148, nhãn 'FLORA_FAUNA' (bất thường): đến đời vua minh mạng (1820 - 1840), có một số quy định bổ sung về trang phục các loại mũ áo như sau: phẩm phục của hoàng tử các công dự lễ nam giao đội mũ miện trước sau đều 9 dải, đính 2 **hoa vàng**, 4 giao long, 4 dây kim tuyến.
+   Nhãn có vẻ đúng: ARTIFACT (2 lần)
+--------------------------------------------------------------------------------
+124. Thực thể: 'đại triều'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'DYNASTY': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+125. Thực thể: 'y'
+Số nhãn khác nhau: 2
+   -> Nhãn 'COSTUME': 1 lần
+   -> Nhãn 'PERSON': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 3177, nhãn 'COSTUME' (bất thường): đối với các bậc kém hơn, chỉ cấp phẩm phục thường triều gồm mũ, **y**, xiêm, đai lưng, tật, hia.
+   Nhãn có vẻ đúng: PERSON (2 lần)
+--------------------------------------------------------------------------------
+126. Thực thể: 'giám sát'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 1 lần
+   -> Nhãn 'ACTION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+127. Thực thể: 'thành thị'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 3 lần
+   -> Nhãn 'LOCATION': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 3452, nhãn 'LOCATION' (bất thường): vào những năm đầu thế kỷ xx, trang phục ở nông thôn ba miền vẫn giữ được theo lối cổ truyền, riêng trang phục của phụ nữ **thành thị** có nhiều thay đổi.
+      • Dòng 3623, nhãn 'LOCATION' (bất thường): đàn bà ở bắc việt và phía bắc trung việt thì đội khăn , mà ở chỗ **thành thị** thì mặc quần , còn ở nhà quê thì hay mặc váy .
+   Nhãn có vẻ đúng: ARCHITECTURE (3 lần)
+--------------------------------------------------------------------------------
+128. Thực thể: 'an nam quốc'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 1 lần
+   -> Nhãn 'LOCATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+129. Thực thể: 'người tàu'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ORGANIZATION': 23 lần
+   -> Nhãn 'DYNASTY': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 3735, nhãn 'DYNASTY' (bất thường): người bản xứ ở đất bách việt không chịu để **người tàu** cai trị , trốn vào rừng ở . được ít lâu quân của đồ thư , vốn là người ở phương bắc , không chịu được thủy thổ , phải bệnh rất nhiều .
+      • Dòng 4157, nhãn 'DYNASTY' (bất thường): từ đấy **người tàu** biết lâm ấp có nhiều của , cứ chực sang lấy.
+   Nhãn có vẻ đúng: ORGANIZATION (23 lần)
+--------------------------------------------------------------------------------
+130. Thực thể: 'nhớ ơn'
+Số nhãn khác nhau: 2
+   -> Nhãn 'CONCEPT': 1 lần
+   -> Nhãn 'ACTION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+131. Thực thể: 'nhất thống thiên hạ'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'EVENT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+132. Thực thể: 'đông quan'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ORGANIZATION': 1 lần
+   -> Nhãn 'LOCATION': 12 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 3789, nhãn 'ORGANIZATION' (bất thường): người làm đầu **đông quan** gọi là đại tưkhông , giữ việc khuyến công , khuyến nông và việc thổ mộc v.
+   Nhãn có vẻ đúng: LOCATION (12 lần)
+--------------------------------------------------------------------------------
+133. Thực thể: 'vũ vương'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 13 lần
+   -> Nhãn 'TITLE': 6 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 8433, nhãn 'TITLE' (bất thường): **vũ vương** nguyễn phúc khoát (1738 1765) truy tôn là thế tông hiếu võ hoàng đế.
+      • Dòng 8919, nhãn 'TITLE' (bất thường): từ ông nguyễn hoàng trở đi , họ nguyễn làm chúa trong nam: phía bắc chống nhau với họ trịnh , phía nam đánh lấy đất chiêm thành và đất chân lạp , truyền đến đời **vũ vương** là nguyễn phúc khoát mới xưng vương hiệu.
+      • Dòng 8920, nhãn 'TITLE' (bất thường): **vũ vương** định triều nghi , lập cung điện ở đất phú xuân , và phong cho người con thứ 9 là nguyễn phúc hiệu làm thế tử.
+      • Dòng 8921, nhãn 'TITLE' (bất thường): năm ất dậu (1765) **vũ vương** mất.
+      • Dòng 8922, nhãn 'TITLE' (bất thường): bấy giờ thế tử đã mất rồi , con thế tử là nguyễn phúc dương hãy còn nhỏ , mà người con trưởng của **vũ vương** cũng mất rồi.
+   Nhãn có vẻ đúng: PERSON (13 lần)
+--------------------------------------------------------------------------------
+134. Thực thể: 'la thành'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 2 lần
+   -> Nhãn 'ARCHITECTURE': 2 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+135. Thực thể: 'phủ thành'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ARCHITECTURE': 1 lần
+   -> Nhãn 'LOCATION': 3 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 4306, nhãn 'ARCHITECTURE' (bất thường): phùng hưng mới chiếm giữ **phủ thành** , được mấy tháng thì mất.
+   Nhãn có vẻ đúng: LOCATION (3 lần)
+--------------------------------------------------------------------------------
+136. Thực thể: 'nam tấn vương'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 5 lần
+   -> Nhãn 'PERSON': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 4652, nhãn 'PERSON' (bất thường): năm tân hợi (951) đời hậu ngô vương , **nam tấn vương** và thiên sáchvương đã đem quân vào đánh không được.
+   Nhãn có vẻ đúng: TITLE (5 lần)
+--------------------------------------------------------------------------------
+137. Thực thể: 'người thổ hào'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ORGANIZATION': 1 lần
+   -> Nhãn 'TIME': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+138. Thực thể: 'thần phục'
+Số nhãn khác nhau: 2
+   -> Nhãn 'COSTUME': 1 lần
+   -> Nhãn 'ACTION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+139. Thực thể: 'trần minh công'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 1 lần
+   -> Nhãn 'PERSON': 2 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 4621, nhãn 'TITLE' (bất thường): trần lãm , xưng là **trần minh công** giữ bố hải khẩu (kỳ bố , tỉnh thái bình).
+   Nhãn có vẻ đúng: PERSON (2 lần)
+--------------------------------------------------------------------------------
+140. Thực thể: 'đi đánh chiêm thành'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'EVENT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+141. Thực thể: 'trần thị'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ORGANIZATION': 1 lần
+   -> Nhãn 'PERSON': 16 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 5058, nhãn 'ORGANIZATION' (bất thường): **trần thị**.
+   Nhãn có vẻ đúng: PERSON (16 lần)
+--------------------------------------------------------------------------------
+142. Thực thể: 'trung tá'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'TITLE': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+143. Thực thể: 'tam thiếu'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 1 lần
+   -> Nhãn 'ARCHITECTURE': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+144. Thực thể: 'hạ chiếu'
+Số nhãn khác nhau: 2
+   -> Nhãn 'DYNASTY': 1 lần
+   -> Nhãn 'ACTION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+145. Thực thể: 'đại quân'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'ORGANIZATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+146. Thực thể: 'bồ đề'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 2 lần
+   -> Nhãn 'LOCATION': 6 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 6001, nhãn 'PERSON' (bất thường): từ khi vua nước chiêm thành là chế a nan mất rồi , con là chế mộ và rể là **bồ đề** tranh nhau làm vua.
+      • Dòng 6002, nhãn 'PERSON' (bất thường): người chiêm thành bỏ chế mộ mà theo **bồ đề** ; qua năm nhâm thìn (1352) chế mộ chạy sang an nam cầu cứu.
+   Nhãn có vẻ đúng: LOCATION (6 lần)
+--------------------------------------------------------------------------------
+147. Thực thể: 'doanh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ORGANIZATION': 1 lần
+   -> Nhãn 'LOCATION': 3 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 6252, nhãn 'ORGANIZATION' (bất thường): mỗi **doanh **có 15 đội , mỗi đoàn có 10 đội.
+   Nhãn có vẻ đúng: LOCATION (3 lần)
+--------------------------------------------------------------------------------
+148. Thực thể: 'thành tổ'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'PERSON': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+149. Thực thể: 'chúa thượng'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 2 lần
+   -> Nhãn 'PERSON': 3 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 6441, nhãn 'TITLE' (bất thường): hóa châu mà không lấy được thì không mặt mũi nào về trông thấy **chúa thượng** ! "
+      • Dòng 9683, nhãn 'TITLE' (bất thường): lúc bấy giờ trần quang diệu đang vây thành diên khánh , nghe tin ấy , thất kinh , nói với các tướng rằng: " **chúa thượng** không phải là người cứng cỏi , để cho đại thần giết lẫn nhau.
+   Nhãn có vẻ đúng: PERSON (3 lần)
+--------------------------------------------------------------------------------
+150. Thực thể: 'thầy chùa'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 1 lần
+   -> Nhãn 'ARCHITECTURE': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+151. Thực thể: 'áo giáp sắt'
+Số nhãn khác nhau: 2
+   -> Nhãn 'COSTUME': 1 lần
+   -> Nhãn 'ARTIFACT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+152. Thực thể: 'lam kinh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 1 lần
+   -> Nhãn 'ARCHITECTURE': 10 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 6600, nhãn 'LOCATION' (bất thường): các công trình kiến trúc tiêu biểu ở kinh đô có tháp báo thiên, chùa một cột, đình làng việt, kinh thành huế và **lam kinh**, minh chứng cho nghệ thuật và kỹ thuật thời kỳ.
+   Nhãn có vẻ đúng: ARCHITECTURE (10 lần)
+--------------------------------------------------------------------------------
+153. Thực thể: 'quân thanh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ORGANIZATION': 5 lần
+   -> Nhãn 'DYNASTY': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 9308, nhãn 'DYNASTY' (bất thường): vua quang trung đại phá **quân thanh**.
+   Nhãn có vẻ đúng: ORGANIZATION (5 lần)
+--------------------------------------------------------------------------------
+154. Thực thể: 'cuộc nổi dậy của tăng ni chùa quỳnh lâm'
+Số nhãn khác nhau: 2
+   -> Nhãn 'EVENT': 1 lần
+   -> Nhãn 'LOCATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+155. Thực thể: 'mỹ lương'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 1 lần
+   -> Nhãn 'DYNASTY': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+156. Thực thể: 'cẩm thủy'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'LOCATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+157. Thực thể: 'trấn'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 10 lần
+   -> Nhãn 'ARCHITECTURE': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 9969, nhãn 'ARCHITECTURE' (bất thường): ngài lập nhà văn miếu ở các doanh các **trấn** , thờ đức khổng tử , để tỏ lòng trọng nho học.
+   Nhãn có vẻ đúng: LOCATION (10 lần)
+--------------------------------------------------------------------------------
+158. Thực thể: 'cao hoàng đế'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'TITLE': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+159. Thực thể: 'cầu hòa'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ACTION': 1 lần
+   -> Nhãn 'LOCATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+160. Thực thể: 'rước dâu'
+Số nhãn khác nhau: 2
+   -> Nhãn 'EVENT': 1 lần
+   -> Nhãn 'ACTION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+161. Thực thể: 'duy ninh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'LOCATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+162. Thực thể: 'duy huyên'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 1 lần
+   -> Nhãn 'PERSON': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+163. Thực thể: 'nguyễn vương'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 136 lần
+   -> Nhãn 'PERSON': 3 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 9811, nhãn 'PERSON' (bất thường): **nguyễn vương** lên ngôi tôn.
+      • Dòng 9812, nhãn 'PERSON' (bất thường): **nguyễn vương** từ khi khởi binh ở gia định tuy đã xưng vương , nhưng vẫn theo các chúa đời trước không đặt niên hiệu.
+      • Dòng 9814, nhãn 'PERSON' (bất thường): các quan thân thuộc đều xin **nguyễn vương** đặt niên hiệu và lên ngôi tôn.
+   Nhãn có vẻ đúng: TITLE (136 lần)
+--------------------------------------------------------------------------------
+164. Thực thể: 'sài côn'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'LOCATION': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+165. Thực thể: 'chiêu tăng'
+Số nhãn khác nhau: 2
+   -> Nhãn 'PERSON': 1 lần
+   -> Nhãn 'TITLE': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+166. Thực thể: 'ngoại giao bộ'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 2 lần
+   -> Nhãn 'ORGANIZATION': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 9606, nhãn 'ORGANIZATION' (bất thường): **ngoại giao bộ** là de montmorin bá tước , thương nghị với ông bá đa lộc việc sang giúp nguyễn vương.
+   Nhãn có vẻ đúng: LOCATION (2 lần)
+--------------------------------------------------------------------------------
+167. Thực thể: 'hiệp biện đại học sĩ'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 1 lần
+   -> Nhãn 'EVENT': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+168. Thực thể: 'tào binh'
+Số nhãn khác nhau: 2
+   -> Nhãn 'ORGANIZATION': 1 lần
+   -> Nhãn 'PERSON': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+169. Thực thể: 'thánh tổ'
+Số nhãn khác nhau: 2
+   -> Nhãn 'TITLE': 1 lần
+   -> Nhãn 'PERSON': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+170. Thực thể: 'phi kị úy'
+Số nhãn khác nhau: 2
+   -> Nhãn 'CONCEPT': 1 lần
+   -> Nhãn 'TITLE': 1 lần
+   Tất cả nhãn đều xuất hiện với tần suất bằng nhau
+--------------------------------------------------------------------------------
+171. Thực thể: 'bạch xuân nguyên'
+Số nhãn khác nhau: 2
+   -> Nhãn 'LOCATION': 2 lần
+   -> Nhãn 'PERSON': 1 lần
+ Ví dụ vị trí xuất hiện bất thường (cần xem lại):
+      • Dòng 10285, nhãn 'PERSON' (bất thường): đến đêm ngày 18 tháng năm , năm quý tị (1833) là năm minh mệnh thứ 14 , khôi cùng với 27 người lính hồi lương vào dinh quan bố , giết cả nhà **bạch xuân nguyên** , rồi ra gặp quan tổng đốc là nguyễn văn quế đem người đến cứu , chúng cũng giết nốt.
+   Nhãn có vẻ đúng: LOCATION (2 lần)
+--------------------------------------------------------------------------------
+
+THỐNG KÊ TỔNG KẾT:
+Tổng thực thể không nhất quán: 171
+Tỷ lệ thực thể không nhất quán: 1.1%
+
+3. CÁC CẶP NHÃN THƯỜNG BỊ NHẦM LẪN
+   • 'PERSON' ↔ 'TITLE': 23 thực thể
+   • 'DYNASTY' ↔ 'ORGANIZATION': 18 thực thể
+   • 'DYNASTY' ↔ 'LOCATION': 10 thực thể
+   • 'ARCHITECTURE' ↔ 'LOCATION': 10 thực thể
+   • 'ACTION' ↔ 'EVENT': 8 thực thể
+   • 'ARTIFACT' ↔ 'COSTUME': 8 thực thể
+   • 'LOCATION' ↔ 'PERSON': 7 thực thể
+   • 'DYNASTY' ↔ 'PERSON': 6 thực thể
+   • 'ACTION' ↔ 'TITLE': 6 thực thể
+   • 'ARCHITECTURE' ↔ 'ARTIFACT': 5 thực thể
+   • 'ORGANIZATION' ↔ 'TITLE': 5 thực thể
+   • 'LOCATION' ↔ 'TITLE': 4 thực thể
+   • 'ACTION' ↔ 'PERSON': 3 thực thể
+   • 'FLORA_FAUNA' ↔ 'LOCATION': 3 thực thể
+   • 'ACTION' ↔ 'LOCATION': 3 thực thể
+   • 'ORGANIZATION' ↔ 'PERSON': 3 thực thể
+   • 'ARTIFACT' ↔ 'FLORA_FAUNA': 3 thực thể
+   • 'ACTION' ↔ 'CONCEPT': 3 thực thể
+   • 'LOCATION' ↔ 'ORGANIZATION': 3 thực thể
+   • 'ARTIFACT' ↔ 'LOCATION': 2 thực thể
+   • 'FLORA_FAUNA' ↔ 'ORGANIZATION': 2 thực thể
+   • 'ACTION' ↔ 'ORGANIZATION': 2 thực thể
+   • 'CONCEPT' ↔ 'LOCATION': 2 thực thể
+   • 'ACTION' ↔ 'DYNASTY': 2 thực thể
+   • 'ACTION' ↔ 'COSTUME': 2 thực thể
+   • 'CONCEPT' ↔ 'TITLE': 2 thực thể
+   • 'COSTUME' ↔ 'PERSON': 2 thực thể
+   • 'ARCHITECTURE' ↔ 'TITLE': 2 thực thể
+   • 'ARCHITECTURE' ↔ 'PERSON': 1 thực thể
+   • 'ACTION' ↔ 'ARCHITECTURE': 1 thực thể
+   • 'ARTIFACT' ↔ 'TITLE': 1 thực thể
+   • 'ACTION' ↔ 'FLORA_FAUNA': 1 thực thể
+   • 'CONCEPT' ↔ 'EVENT': 1 thực thể
+   • 'CONCEPT' ↔ 'PERSON': 1 thực thể
+   • 'EVENT' ↔ 'PERSON': 1 thực thể
+   • 'ACTION' ↔ 'ARTIFACT': 1 thực thể
+   • 'FLORA_FAUNA' ↔ 'PERSON': 1 thực thể
+   • 'DYNASTY' ↔ 'EVENT': 1 thực thể
+   • 'ORGANIZATION' ↔ 'TIME': 1 thực thể
+   • 'EVENT' ↔ 'LOCATION': 1 thực thể
+   • 'EVENT' ↔ 'TITLE': 1 thực thể

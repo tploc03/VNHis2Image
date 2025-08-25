@@ -1,317 +1,229 @@
 # backend/app/main.py
-import os, json, time
-from typing import Dict, List, Optional
-from pathlib import Path
+# -*- coding: utf-8 -*-
+"""
+FastAPI backend — Generate images with Google Gemini Imagen 3
+Workflow (ẩn trong hệ thống):
+1) Nhận prompt (VI) từ người dùng
+2) Dịch sang EN bằng Gemini (TRANSLATE_MODEL)
+3) Gọi Imagen 3 (IMAGEN_MODEL) để sinh ảnh
+"""
+from __future__ import annotations
 
-from fastapi import FastAPI, HTTPException, status
+import os
+import base64
+from typing import Literal, Optional
+
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+
+from google import genai
+from google.genai import types
 from dotenv import load_dotenv
-import spacy
-import requests
-from spacy.lang.vi import Vietnamese
-import math
+
 
 load_dotenv()
-SD_URL = os.getenv("SD_WEBUI", "http://127.0.0.1:7860")
-MODEL_PATH = os.getenv("MODEL_PATH", "models/spancat_v5/model-best")
-SPANS_KEY = os.getenv("SPANS_KEY", "sc")
-ACCEPTANCE_THRESHOLD = float(os.getenv("ACCEPTANCE_THRESHOLD", "0.3"))
-SD_WEBUI = os.getenv("SD_WEBUI")  # e.g. http://127.0.0.1:7860
 
-IMAGE_PROVIDER_DEFAULT = (os.getenv("IMAGE_PROVIDER_DEFAULT", "local") or "local").lower()
-CLOUD_IMAGE_API_URL = os.getenv("CLOUD_IMAGE_API_URL") or ""
-CLOUD_IMAGE_API_KEY = os.getenv("CLOUD_IMAGE_API_KEY") or ""
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
-PROMPT_DIR = REPO_ROOT / "src" / "main" / "prompts"
-TEMPLATES = json.loads((PROMPT_DIR / "prompt_templates.json").read_text(encoding="utf-8"))
-SCHEMAS   = json.loads((PROMPT_DIR / "prompt_schema.json").read_text(encoding="utf-8"))
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY") or ""
+IMAGEN_MODEL = os.getenv("IMAGEN_MODEL", "imagen-3.0-generate-002")
+TRANSLATE_MODEL = os.getenv("TRANSLATE_MODEL", "gemini-2.5-pro")
+IMAGEN_SAMPLE_SIZE = os.getenv("IMAGEN_SAMPLE_SIZE", "1K")
+ALLOW_PEOPLE = os.getenv("ALLOW_PEOPLE", "allow_adult")
+DEFAULT_MIME = os.getenv("IMAGEN_MIME", "image/png")
+DEFAULT_NUM_IMAGES = int(os.getenv("IMAGEN_NUM_IMAGES", "1"))
 
-LABEL_TO_FIELD = {
-    "PERSON": "person",
-    "LOCATION": "location",
-    "ORGANIZATION": "organization",
-    "DYNASTY": "dynasty",
-    "TIME": "time",
-    "COSTUME": "costume",
-    "ARCHITECTURE": "architecture",
-    "ARTIFACT": "artifact",
-    "FLORA_FAUNA": "flora_fauna",
-    "EVENT": "event",
-    "ACTION": "action",
-    "CONCEPT": "concept",
-    "TITLE": "title",
-}
-MULTI_FIELDS = {"artifact", "flora_fauna"}
+ALLOWED_ORIGINS = os.getenv("CORS_ORIGINS", "*")
+ALLOWED_METHODS = os.getenv("ALLOWED_METHODS", "GET,POST,OPTIONS")
+ALLOWED_HEADERS = os.getenv("ALLOWED_HEADERS", "*")
 
-def cloud_configured() -> bool:
-    return bool(CLOUD_IMAGE_API_URL and CLOUD_IMAGE_API_KEY)
 
-# ---------- spaCy model ----------
-print(f"[NER] Loading model: {MODEL_PATH}")
-nlp = spacy.load(MODEL_PATH)
+if not GOOGLE_API_KEY:
+    pass
 
-try:
-    # test tokenizer
-    _ = nlp("xin chào")
-except Exception as e:
-    print("[NER] Vietnamese tokenizer lỗi PyVi:", e)
-    print("[NER] Fallback sang rule-based tokenizer đơn giản.")
-    nlp.tokenizer = Vietnamese().tokenizer
+client = genai.Client()
 
-# ---------- FastAPI ----------
-app = FastAPI(title="VNHIS2IMAGE API", version="0.2.0")
+app = FastAPI(title="Historical Image Generator (Gemini Imagen 3)")
 
-origins = [o.strip() for o in os.getenv("CORS_ORIGINS", "").split(",") if o.strip()]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins or ["*"],
+    allow_origins=[o.strip() for o in ALLOWED_ORIGINS.split(",")] if ALLOWED_ORIGINS else ["*"],
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=[m.strip() for m in ALLOWED_METHODS.split(",")] if ALLOWED_METHODS else ["*"],
+    allow_headers=[h.strip() for h in ALLOWED_HEADERS.split(",")] if ALLOWED_HEADERS else ["*"],
 )
 
-# ---------- Schemas ----------
-class NERIn(BaseModel):
-    text: str
-    style: str
+AspectRatioT = Literal["1:1", "3:4", "4:3", "9:16", "16:9"]
+SampleSizeT = Literal["1K", "2K"]
+PeopleT = Literal["dont_allow", "allow_adult", "allow_all"]
 
-class NEROut(BaseModel):
-    fields: Dict[str, str]
-    scores: Dict[str, float]
-    missing: List[str] = []
-
-class GenIn(BaseModel):
-    prompt: str
-    provider: Optional[str] = None  # 'local' | 'cloud' | 'auto'
-    steps: Optional[int] = 30
-    cfg_scale: Optional[float] = 7.0
-    width: Optional[int] = 768
-    height: Optional[int] = 512
 
 class GenReq(BaseModel):
-  prompt: str
-  steps: int | None = 20
-  width: int | None = 768
-  height: int | None = 1024
+    prompt: str = Field(..., description="Prompt tiếng Việt hoặc prompt từ form.")
+    aspect_ratio: Optional[AspectRatioT] = Field(None, description="Aspect ratio cho Imagen.")
+    sample_image_size: Optional[SampleSizeT] = Field(None, description='Kích cỡ mẫu "1K" hoặc "2K"')
+    number_of_images: int = Field(DEFAULT_NUM_IMAGES, ge=1, le=4, description="Số ảnh muốn sinh (1-4).")
+    mime_type: Literal["image/png", "image/jpeg"] = Field(DEFAULT_MIME, description="Định dạng ảnh output.")
+    allow_people: PeopleT = Field(ALLOW_PEOPLE, description="Chính sách sinh ảnh có người.")
+    width: Optional[int] = None
+    height: Optional[int] = None
+
 
 class GenOut(BaseModel):
-    image_url: Optional[str] = None
-    image_base64: Optional[str] = None
+    image_base64: str
+    model: str = Field(..., description="Model Imagen dùng để sinh.")
 
-# ---------- Helpers ----------
-def validate_required(style: str, fields: Dict[str, str]) -> List[str]:
-    req = SCHEMAS.get(style, {}).get("required", [])
-    return [k for k in req if not fields.get(k, "").strip()]
-def sd_progress(skip_current_image: bool = True) -> dict | None:
-    if not SD_URL:
-        return None
-    try:
-        r = requests.get(
-            f"{SD_URL}/sdapi/v1/progress",
-            params={"skip_current_image": "true" if skip_current_image else "false"},
-            timeout=10,
-        )
-        r.raise_for_status()
-        return r.json()
-    except Exception as e:
-        print("[SD] progress error:", e)
-        return None
 
-def sd_interrupt() -> bool:
-    if not SD_URL:
-        return False
-    try:
-        r = requests.post(f"{SD_URL}/sdapi/v1/interrupt", timeout=5)
-        r.raise_for_status()
-        return True
-    except Exception as e:
-        print("[SD] interrupt error:", e)
-        return False
-def call_sd_webui_txt2img(prompt: str, steps=30, cfg_scale=7, width=768, height=512) -> Optional[str]:
-    if not SD_WEBUI:
-        return None
-    try:
-        r = requests.post(
-            f"{SD_WEBUI}/sdapi/v1/txt2img",
-            json={
-                "prompt": prompt,
-                "steps": steps,
-                "cfg_scale": cfg_scale,
-                "width": width,
-                "height": height,
-            },
-            timeout=120,
-        )
-        r.raise_for_status()
-        data = r.json()
-        if "images" in data and data["images"]:
-            return f"data:image/png;base64,{data['images'][0]}"
-    except Exception as e:
-        print("[SD] Error:", e)
-    return None
-
-def call_cloud_txt2img(prompt: str, steps=30, cfg_scale=7, width=768, height=512) -> Optional[Dict[str,str]]:
+def _guess_aspect_ratio(width: Optional[int], height: Optional[int]) -> AspectRatioT:
     """
-    Placeholder cloud caller.
-    When CLOUD_* not configured, return None.
-    Later you can implement Replicate/Stability here.
+    Chuyển width/height (nếu được gửi) sang aspect_ratio hợp lệ của Imagen.
+    Nếu không có, trả mặc định "1:1".
     """
-    if not cloud_configured():
-        return None
-    try:
-        headers = {"Content-Type": "application/json"}
-        if CLOUD_IMAGE_API_KEY:
-            headers["Authorization"] = f"Bearer {CLOUD_IMAGE_API_KEY}"
-        r = requests.post(
-            CLOUD_IMAGE_API_URL,
-            json={
-                "prompt": prompt,
-                "steps": steps,
-                "cfg_scale": cfg_scale,
-                "width": width,
-                "height": height,
-            },
-            headers=headers,
-            timeout=120,
-        )
-        r.raise_for_status()
-        data = r.json()
-        if data.get("image_base64") or data.get("image_url"):
-            return {"image_base64": data.get("image_base64"), "image_url": data.get("image_url")}
-    except Exception as e:
-        print("[CLOUD] Error:", e)
-    return None
-def _sd_post(path: str, json=None, timeout=5):
-    try:
-        r = requests.post(f"{SD_WEBUI}{path}", json=json or {}, timeout=timeout)
-        r.raise_for_status()
-        return True, r
-    except Exception as e:
-        print(f"[SD]{path} error:", e)
-        return False, e
+    if not width or not height or width <= 0 or height <= 0:
+        return "1:1"
+    r = width / float(height)
+    ratios = {
+        "1:1": 1.0,
+        "3:4": 0.75,
+        "4:3": 1.3333,
+        "9:16": 0.5625,
+        "16:9": 1.7777,
+    }
+    best = min(ratios.items(), key=lambda kv: abs(kv[1] - r))[0]
+    return best  # type: ignore[return-value]
 
-# ---------- Endpoints ----------
+
+def _to_data_uri(image_bytes: bytes, mime: str) -> str:
+    return f"data:{mime};base64,{base64.b64encode(image_bytes).decode('ascii')}"
+
+
+def _translate_vi_to_en(vietnamese_prompt: str) -> str:
+    """
+    Dịch prompt sang tiếng Anh bằng Gemini (TRANSLATE_MODEL).
+    Lưu ý: Imagen chỉ hỗ trợ prompt tiếng Anh. (docs)  # noqa
+    """
+    if not vietnamese_prompt or not vietnamese_prompt.strip():
+        raise ValueError("empty_prompt")
+
+    cfg = types.GenerateContentConfig(
+        system_instruction=(
+            "You are a professional translator for visual art prompts. "
+            "Translate the user's Vietnamese text into concise, natural English "
+            "for image generation. Keep proper nouns (Vietnamese dynasties, "
+            "names, places) accurately romanized. Do NOT add new details. "
+            "Return ONLY the English prompt text."
+        ),
+        temperature=0.2,
+        max_output_tokens=300,
+    )
+
+    resp = client.models.generate_content(
+        model=TRANSLATE_MODEL,
+        contents=vietnamese_prompt,
+        config=cfg,
+    )
+    text = (resp.text or "").strip()
+    if text.startswith("```"):
+        text = text.strip("` \n")
+        lines = [ln for ln in text.splitlines() if ln.strip()]
+        if len(lines) >= 2:
+            text = "\n".join(lines[1:])
+    if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):
+        text = text[1:-1].strip()
+
+    if not text:
+        raise RuntimeError("translation_failed")
+    return text
+
+
+def _generate_with_imagen(
+    prompt_en: str,
+    *,
+    aspect_ratio: AspectRatioT,
+    sample_image_size: SampleSizeT,
+    number_of_images: int,
+    mime_type: str,
+    allow_people: PeopleT,
+) -> bytes:
+    """
+    Gọi Imagen 3 để sinh ảnh; trả về bytes của ảnh đầu tiên.
+    """
+    cfg = types.GenerateImagesConfig(
+        number_of_images=number_of_images,
+        sample_image_size=sample_image_size,
+        aspect_ratio=aspect_ratio,
+        person_generation=allow_people,
+        include_rai_reason=True,
+        output_mime_type=mime_type,
+    )
+
+    resp = client.models.generate_images(
+        model=IMAGEN_MODEL,
+        prompt=prompt_en,
+        config=cfg,
+    )
+
+    if not resp.generated_images:
+        raise RuntimeError("no_image_generated")
+
+    img_obj = resp.generated_images[0].image
+    image_bytes: Optional[bytes] = getattr(img_obj, "image_bytes", None)
+
+    if image_bytes is None:
+        image_bytes = getattr(img_obj, "bytes", None) or getattr(img_obj, "data", None)
+
+    if not image_bytes or not isinstance(image_bytes, (bytes, bytearray)):
+        raise RuntimeError("image_bytes_missing")
+
+    return bytes(image_bytes)
+
 @app.get("/health")
 def health():
     return {
         "ok": True,
-        "model_path": MODEL_PATH,
-        "spans_key": SPANS_KEY,
-        "templates": list(TEMPLATES.keys()),
-        "providers": {
-            "local": bool(SD_WEBUI),
-            "cloud": cloud_configured(),
-            "default": IMAGE_PROVIDER_DEFAULT,
+        "imagen_model": IMAGEN_MODEL,
+        "translate_model": TRANSLATE_MODEL,
+        "supports": {
+            "aspect_ratio": ["1:1", "3:4", "4:3", "9:16", "16:9"],
+            "sample_image_size": ["1K", "2K"],
+            "mime": ["image/png", "image/jpeg"],
         },
+        "notes": "Prompts are auto-translated VI→EN before Imagen generation.",
     }
 
-@app.post("/ner", response_model=NEROut)
-def ner_endpoint(inp: NERIn):
-    text = inp.text.strip()
-    doc = nlp(text)
-
-    spans = doc.spans.get(SPANS_KEY, [])
-    scores_attr = getattr(spans, "attrs", {}).get("scores", [1.0] * len(spans))
-
-    bucket: Dict[str, List[tuple[str, float]]] = {}
-    for sp, sc in zip(spans, scores_attr):
-        if sc < ACCEPTANCE_THRESHOLD:
-            continue
-        field = LABEL_TO_FIELD.get(sp.label_)
-        if not field:
-            continue
-        bucket.setdefault(field, []).append((sp.text, float(sc)))
-
-    fields: Dict[str, str] = {}
-    scores: Dict[str, float] = {}
-
-    for field, items in bucket.items():
-        if field in MULTI_FIELDS:
-            items_sorted = sorted(items, key=lambda x: x[1], reverse=True)
-            texts = [t for t, _ in items_sorted]
-            seen = set(); unique_texts = []
-            for t in texts:
-                if t not in seen:
-                    unique_texts.append(t); seen.add(t)
-            fields[field] = ", ".join(unique_texts)
-            scores[field] = max(sc for _, sc in items_sorted)
-        else:
-            best_text, best_score = max(items, key=lambda x: x[1])
-            fields[field] = best_text
-            scores[field] = best_score
-
-    for k in set(LABEL_TO_FIELD.values()):
-        fields.setdefault(k, "")
-        scores.setdefault(k, 0.0)
-
-    missing = validate_required(inp.style, fields)
-    return NEROut(fields=fields, scores=scores, missing=missing)
 
 @app.post("/generate", response_model=GenOut)
 def generate(req: GenReq):
-    sd_base = os.getenv("SD_WEBUI", SD_WEBUI) or "http://127.0.0.1:7860"
-    payload = {
-        "prompt": req.prompt,
-        "steps": req.steps or 30,
-        "width": req.width or 768,
-        "height": req.height or 1024,
-        "cfg_scale": 7,
-    }
+    if not GOOGLE_API_KEY:
+        raise HTTPException(status_code=401, detail="missing_GOOGLE_API_KEY")
+
+    # 1) Hidden step: Translate VI -> EN
     try:
-        r = requests.post(f"{sd_base}/sdapi/v1/txt2img", json=payload, timeout=180)
-    except requests.exceptions.RequestException as e:
-        # A1111 không reachable
-        raise HTTPException(status_code=502, detail=f"sd_unreachable: {e}")
-    if not r.ok:
-        # Trả thông tin lỗi upstream để debug
-        detail = (r.text or "")[:400]
-        raise HTTPException(status_code=502, detail=f"sd_bad_response_{r.status_code}: {detail}")
+        prompt_en = _translate_vi_to_en(req.prompt)
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"translation_error: {e}")
 
-    j = r.json()
-    img_b64 = (j.get("images") or [None])[0]
-    if not img_b64:
-        raise HTTPException(status_code=502, detail="sd_no_image_in_response")
+    # 2) Build Imagen config
+    aspect = req.aspect_ratio or _guess_aspect_ratio(req.width, req.height)
+    sample_size = req.sample_image_size or IMAGEN_SAMPLE_SIZE
+    try:
+        img_bytes = _generate_with_imagen(
+            prompt_en,
+            aspect_ratio=aspect,
+            sample_image_size=sample_size,  # Only for Standard/Ultra; safe default
+            number_of_images=max(1, min(4, req.number_of_images)),
+            mime_type=req.mime_type,
+            allow_people=req.allow_people,
+        )
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"imagen_error: {e}")
 
-    # Chuẩn hoá data URI để FE/batch đọc thống nhất
-    if not img_b64.startswith("data:"):
-        img_b64 = f"data:image/png;base64,{img_b64}"
-    return {"image_base64": img_b64}
+    return GenOut(
+        image_base64=_to_data_uri(img_bytes, req.mime_type),
+        model=IMAGEN_MODEL,
+    )
 
-@app.get("/progress")
-def progress():
-    data = sd_progress(skip_current_image=True) or {}
-    # A1111 trả { "progress": 0..1, "eta_relative": seconds, "state": {...}, "current_image": "..." }
-    pct = float(data.get("progress") or 0.0)
-    eta = float(data.get("eta_relative") or 0.0)
-    state = data.get("state") or {}
-    # Có thể thêm snapshot preview nếu muốn: current_image
-    return {
-        "progress": pct,                 # 0..1
-        "percent": round(pct * 100, 1),  # 0..100
-        "eta_seconds": int(eta),
-        "job": {
-            "sampling_step": state.get("sampling_step"),
-            "sampling_steps": state.get("sampling_steps"),
-            "job_count": state.get("job_count"),
-            "job_no": state.get("job_no"),
-        },
-        "has_preview": bool(data.get("current_image")),
-        # Nếu muốn hiển thị ảnh xem trước: bật dòng dưới, FE sẽ dùng khi cần
-        # "preview_b64": data.get("current_image"),
-    }
 
-@app.post("/interrupt")
-def interrupt():
-    ok, r = _sd_post("/sdapi/v1/interrupt", timeout=3)
-    if not ok:
-        raise HTTPException(status_code=502, detail=f"interrupt_failed: {r}")
-    return {"ok": True}
-
-@app.post("/skip")
-def skip():
-    ok, r = _sd_post("/sdapi/v1/skip", timeout=3)
-    if not ok:
-        raise HTTPException(status_code=502, detail=f"skip_failed: {r}")
-    return {"ok": True}
+@app.get("/")
+def root():
+    return {"message": "Historical Image Generator API (Gemini Imagen 3). Use POST /generate."}

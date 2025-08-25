@@ -58,7 +58,6 @@ for filename in txt_files:
         labels = []
 
         spans = doc.spans.get(SPANS_KEY, [])
-        # Nếu không có thuộc tính scores, mặc định là 1.0
         scores = getattr(spans, "attrs", {}).get("scores", [1.0]*len(spans))
 
         # print(f"\nCâu {i+1}: {text}")
@@ -66,7 +65,6 @@ for filename in txt_files:
         #     print("Không tìm thấy span nào.")
 
         for span, score in zip(spans, scores):
-            # print(f"Tìm thấy: '{span.text}' ({span.label_}) - Điểm: {score:.2f}")
             if score >= ACCEPTANCE_THRESHOLD:
                 labels.append([span.start_char, span.end_char, span.label_])
 
