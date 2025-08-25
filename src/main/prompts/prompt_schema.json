@@ -1,0 +1,5 @@
+{
+  "portrait": { "required": ["person","dynasty","time","costume"] },
+  "battle":   { "required": ["event","time","person","title","organization","costume","location","action"] },
+  "architecture": { "required": ["architecture","dynasty","time","location"] }
+}

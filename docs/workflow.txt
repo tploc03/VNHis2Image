@@ -1,0 +1,6 @@
+Workflow:
+
+Input văn bản lịch sử → NLP processing → Structured data
+Structured data → Prompt engineering → Image generation prompts
+Prompts → AI model → Raw images
+Raw images → Post-processing → Final historical images

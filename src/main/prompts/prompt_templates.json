@@ -1,0 +1,5 @@
+{
+  "portrait": "A historically accurate portrait of [person] from the [dynasty] dynasty ([time]).\nAttire: [costume], accessories if any: [artifact]. Title(s): [title]. Organization: [organization]. Setting hints: [architecture], [location], with symbolic flora/fauna: [flora_fauna].\nDepict key traits: [concept].\nStyle: Vietnamese feudal history, museum-grade realism, mid-shot, natural lighting.\nAvoid anachronisms. No modern objects.\n",
+  "battle": "A realistic, historically grounded battle scene of [event] ([time]) led by [person] ([title]) belonging to [organization].\nArmor/garments: [costume]. Battlefield: [location], with weapons/artifacts: [artifact], environment includes [flora_fauna].\nMain actions: [action].\nCinematic lighting, dynamic composition, Vietnamese feudal realism, no modern elements.\n",
+  "architecture": "A detailed depiction of [architecture] from the [dynasty] dynasty ([time]) in [location].\nInclude related artifacts: [artifact], cultural motifs, flora/fauna: [flora_fauna].\nEmphasize proportions, materials, roof curvature, ornament patterns.\nStyle: Vietnamese feudal history, documentary realism, no modern objects.\n"
+}

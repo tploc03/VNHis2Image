@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-neutral-950 text-[#fdf6e3];
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.trongdong-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 1400px;
+  height: 1400px;
+  background: url('./assets/trongdong.png') no-repeat center/contain;
+  opacity: 0.07;
+  transform: translate(-50%, -50%);
+  animation: spin 120s linear infinite;
+  z-index: 0;
+}
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes progress {
+  0% { width: 0%; }
+  50% { width: 90%; }
+  100% { width: 0%; }
+}
+
+.content-overlay {
+  position: relative;
+  z-index: 10;
+}
