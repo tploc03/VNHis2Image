@@ -22,7 +22,6 @@ from dotenv import load_dotenv, find_dotenv
 from google import genai
 from google.genai import types
 
-# ----- Load environment (.env ở root + .env cạnh file) -----
 load_dotenv(find_dotenv(), override=True)
 load_dotenv(os.path.join(os.path.dirname(__file__), ".env"), override=True)
 
@@ -30,7 +29,7 @@ load_dotenv(os.path.join(os.path.dirname(__file__), ".env"), override=True)
 AspectRatioT = Literal["1:1", "3:4", "4:3", "9:16", "16:9"]
 PeopleT = Literal["dont_allow", "allow_adult", "allow_all"]
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")  # bắt buộc
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 IMAGEN_MODEL = os.getenv("IMAGEN_MODEL", "imagen-3.0-generate-002")
 
 TRANSLATE_MODEL = os.getenv("TRANSLATE_MODEL", "gemini-2.5-flash-preview-05-20") 
@@ -133,6 +132,7 @@ def _translate_vi_to_en(vietnamese_prompt: str) -> str:
     try:
         translation_prompt = f"""Translate the following Vietnamese text to English for AI image generation. 
             Keep the translation concise, clear, and suitable for image generation (under 200 words).
+            You can add a bit to have a better image, but DO NOT change a main content of the prompt.
             Focus on visual elements, style, and composition.
 
             Vietnamese text: {vietnamese_prompt}
@@ -385,6 +385,9 @@ def generate(req: GenReq):
     # 2) Build Imagen config
     aspect = req.aspect_ratio or _guess_aspect_ratio(req.width, req.height)
     
+    # Track if we used fallback
+    is_fallback = False
+    
     try:
         print("Bắt đầu tạo ảnh với Imagen...")
         img_bytes = _generate_with_imagen(
@@ -423,12 +426,19 @@ def generate(req: GenReq):
             img.save(img_io, format='PNG')
             img_bytes = img_io.getvalue()
             
+            is_fallback = True
             print("Đã tạo ảnh placeholder thay thế.")
         else:
             raise HTTPException(status_code=502, detail=f"imagen_error: {e}")
     
+    # Determine model name based on whether we used fallback
+    model_name = f"{IMAGEN_MODEL} (fallback)" if is_fallback else IMAGEN_MODEL
+    
     print("--- Hoàn thành yêu cầu /generate ---")
-    return GenOut(image_base64=_to_data_uri(img_bytes, req.mime_type), model=f"{IMAGEN_MODEL} (fallback)" if "billed users" in str(e) else IMAGEN_MODEL)
+    return GenOut(
+        image_base64=_to_data_uri(img_bytes, req.mime_type), 
+        model=model_name
+    )
 
 @app.post("/interrupt")
 def interrupt():

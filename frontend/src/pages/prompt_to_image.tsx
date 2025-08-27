@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+ 
 /* eslint-disable no-empty */
  
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -126,7 +126,7 @@ export default function PromptToImage() {
   const template = PROMPT_TEMPLATES[style];
   const placeholders = useMemo(() => extractPlaceholders(template), [template]);
 
-  const [extraNotes, setExtraNotes] = useState("");
+  const [extraNotes] = useState("");
   const [generatedPrompt, setGeneratedPrompt] = useState("");
   const [imgUrl, setImgUrl] = useState<string>("");
   const [loading, setLoading] = useState(false);
